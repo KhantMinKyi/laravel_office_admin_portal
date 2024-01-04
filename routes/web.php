@@ -16,12 +16,21 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/admin_user_list', function () {
-    return view('users.admin_user_list');
-});
-Route::get('/normal_user_list', function () {
-    return view('users.normal_user_list');
-});
-Route::get('/operation_user_list', function () {
-    return view('users.operation_user_list');
+
+Route::prefix('admin')->group(function () {
+    Route::get('/', function () {
+        return view('admins.admin_index');
+    });
+    Route::get('/admin_user_list', function () {
+        return view('admins.users.admin_user_list');
+    });
+    Route::get('/normal_user_list', function () {
+        return view('admins.users.normal_user_list');
+    });
+    Route::get('/operation_user_list', function () {
+        return view('admins.users.operation_user_list');
+    });
+    Route::get('/user_list', function () {
+        return view('admins.users.index');
+    });
 });
