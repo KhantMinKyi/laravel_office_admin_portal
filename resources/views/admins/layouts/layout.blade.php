@@ -5,11 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>{{ config('app.name') }}</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    @livewireStyles()
 
 <body class="dark:bg-mainbody-900">
-
 
 
     <nav class="fixed top-0 z-50 w-full bg-white border-b border-gray-200 dark:bg-mainbody-800 dark:border-gray-700">
@@ -27,7 +27,7 @@
                             </path>
                         </svg>
                     </button> --}}
-                    <button data-drawer-target="sidebar-multi-level-sidebar"
+                    <button wire:key='drawer' data-drawer-target="sidebar-multi-level-sidebar"
                         data-drawer-toggle="sidebar-multi-level-sidebar" aria-controls="sidebar-multi-level-sidebar"
                         type="button"
                         class="inline-flex items-center p-2 mt-2 ms-3 text-sm text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-mainbody-700 dark:focus:ring-mainbody-600">
@@ -49,7 +49,7 @@
                 <div class="flex items-center">
                     <div class="flex items-center ms-3">
                         <div>
-                            <button type="button"
+                            <button type="button" wire:key='drawer2'
                                 class="flex text-sm mx-2 bg-gray-800 rounded-full focus:ring-4 focus:ring-gray-300 dark:focus:ring-mainbody-700"
                                 aria-expanded="false" data-dropdown-toggle="dropdown-user">
                                 <span class="sr-only">Open user menu</span>
@@ -131,16 +131,16 @@
                     </button>
                     <ul id="dropdown-example" class="hidden py-2 space-y-2">
                         <li>
-                            <a href="/admin/admin_user_list"
+                            <a wire:navigate href="/admin/admin_user_list"
                                 class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-mainbody-700">Admins</a>
                         </li>
                         <li>
-                            <a href="/admin/operation_user_list"
+                            <a wire:navigate href="/admin/operation_user_list"
                                 class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-mainbody-700">Operation
                                 Staffs</a>
                         </li>
                         <li>
-                            <a href="/admin/normal_user_list"
+                            <a wire:navigate href="/admin/normal_user_list"
                                 class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-mainbody-700">Normal
                                 Staffs</a>
                         </li>
@@ -291,7 +291,8 @@
             }
         }
     </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.js"></script>
+    <script data-navigate-track src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.js"></script>
+    @livewireScripts()
 </body>
 
 </html>
