@@ -33,4 +33,7 @@ Route::prefix('admin')->group(function () {
     Route::get('/user_list', function () {
         return view('admins.users.index');
     });
+    Route::get('//location_management', function () {
+        return view('admins.location_management.location_management_index');
+    });
 });

@@ -1,7 +1,7 @@
 @extends('admins.layouts.layout')
 
 @section('content')
-    <div class="p-4 sm:ml-64">
+    <div class="p-4">
         <section class=dark:bg-mainbody-900 p-3 sm:p-5">
             <div class="mx-auto  px-4 lg:px-12">
                 <!-- Start coding here -->
