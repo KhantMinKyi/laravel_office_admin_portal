@@ -65,72 +65,12 @@
                     {{-- Profile --}}
                     <div class="hidden p-4 rounded-lg bg-gray-50 dark:bg-mainbody-900" id="view-city" role="tabpanel"
                         aria-labelledby="view-city-tab">
-                        @include('admins.partial_view.location_management.city_list')
+                        @include('admins.partial_view.location_management.city.city_list')
                     </div>
                     {{-- Contact --}}
                     <div class="hidden p-4 rounded-lg bg-gray-50 dark:bg-mainbody-900" id="view-township"
                         role="tabpanel" aria-labelledby="view-township-tab">
-                        <div class="bg-white dark:bg-mainbody-800 shadow rounded-lg p-6">
-                            <div>
-                                <h2 class="text-xl font-bold mb-4">Contact</h2>
-                                <div>
-                                    <div class="grid gap-6 mb-6 md:grid-cols-2">
-                                        <div>
-                                            <label for="phone_1"
-                                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Phone
-                                                1</label>
-                                            <h4 class=" bg-gray-100 dark:bg-mainbody-700 p-2 rounded font-medium">
-                                                096543563421</h4>
-                                        </div>
-                                        <div>
-                                            <label for="phone_1"
-                                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Phone
-                                                2</label>
-                                            <h4 class=" bg-gray-100 dark:bg-mainbody-700 p-2 rounded font-medium">
-                                                099675673435</h4>
-                                        </div>
-                                        <div>
-                                            <label for="phone_1"
-                                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email</label>
-                                            <h4 class=" bg-gray-100 dark:bg-mainbody-700 p-2 rounded font-medium">
-                                                admin@gmail.com</h4>
-                                        </div>
-                                        <div>
-                                            <label for="phone_1"
-                                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Address</label>
-                                            <h4 class=" bg-gray-100 dark:bg-mainbody-700 p-2 rounded font-medium">
-                                                Yangon/Botahtaung</h4>
-                                        </div>
-                                        <div>
-                                            <label for="phone_1"
-                                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">City</label>
-                                            <h4 class=" bg-gray-100 dark:bg-mainbody-700 p-2 rounded font-medium">Yangon
-                                            </h4>
-                                        </div>
-                                        <div>
-                                            <label for="phone_1"
-                                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Township</label>
-                                            <h4 class=" bg-gray-100 dark:bg-mainbody-700 p-2 rounded font-medium">
-                                                Botahtaung</h4>
-                                        </div>
-                                        <div>
-                                            <label for="phone_1"
-                                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Father
-                                                name</label>
-                                            <h4 class=" bg-gray-100 dark:bg-mainbody-700 p-2 rounded font-medium">U Ba
-                                            </h4>
-                                        </div>
-                                        <div>
-                                            <label for="phone_1"
-                                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Contact
-                                                Phone</label>
-                                            <h4 class=" bg-gray-100 dark:bg-mainbody-700 p-2 rounded font-medium">
-                                                0953453768</h4>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        @include('admins.partial_view.location_management.township.township_list')
                     </div>
                     {{-- Job description --}}
                     <div class="hidden p-4 rounded-lg bg-gray-50 dark:bg-mainbody-900" id="view-department"
@@ -186,7 +126,8 @@
             </div>
         </div>
     </section>
-    @include('admins.location_management.include_model')
+    @include('admins.location_management.include_city_model')
+    @include('admins.location_management.include_township_model')
 </div>
 <script>
     var encryptModel = document.getElementById('encrypt-model');
@@ -213,6 +154,20 @@
         function togglePopupCityEditModel() {
             var popupCityEditModel = document.getElementById('popup-city-edit-model');
             popupCityEditModel.classList.toggle('hidden');
+        }
+        // View Add Form For Township
+        function togglePopupTownshipAddModel() {
+        var popupTownshipAddModel = document.getElementById('popup-township-add-model');
+        popupTownshipAddModel.classList.toggle('hidden');
+        }
+        // View User at Township
+        function togglePopupTownshipViewModel(a) {
+        var popupTownshipViewModel = document.getElementById('popup-township-view-model');
+        popupTownshipViewModel.classList.toggle('hidden');
+        }
+        function togglePopupTownshipEditModel() {
+            var popupTownshipEditModel = document.getElementById('popup-township-edit-model');
+            popupTownshipEditModel.classList.toggle('hidden');
         }
 
 </script>
