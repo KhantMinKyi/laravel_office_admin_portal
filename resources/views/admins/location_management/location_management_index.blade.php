@@ -50,77 +50,38 @@
                         <li class="me-2" role="presentation">
                             <button
                                 class="inline-block p-4 border-b-2 rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300"
-                                id="view-department-tab" data-tabs-target="#view-department" type="button" role="tab"
-                                aria-controls="settings" aria-selected="false">Department</button>
+                                id="view-branch-tab" data-tabs-target="#view-branch" type="button" role="tab"
+                                aria-controls="settings" aria-selected="false">Branch</button>
                         </li>
                         <li class="me-2" role="presentation">
                             <button
                                 class="inline-block p-4 border-b-2 rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300"
-                                id="view-branch-tab" data-tabs-target="#view-branch" type="button" role="tab"
-                                aria-controls="settings" aria-selected="false">Branch</button>
+                                id="view-department-tab" data-tabs-target="#view-department" type="button" role="tab"
+                                aria-controls="settings" aria-selected="false">Department</button>
                         </li>
                     </ul>
                 </div>
                 <div id="default-tab-content">
-                    {{-- Profile --}}
+                    {{-- City --}}
                     <div class="hidden p-4 rounded-lg bg-gray-50 dark:bg-mainbody-900" id="view-city" role="tabpanel"
                         aria-labelledby="view-city-tab">
                         @include('admins.partial_view.location_management.city.city_list')
                     </div>
-                    {{-- Contact --}}
+                    {{-- Township --}}
                     <div class="hidden p-4 rounded-lg bg-gray-50 dark:bg-mainbody-900" id="view-township"
                         role="tabpanel" aria-labelledby="view-township-tab">
                         @include('admins.partial_view.location_management.township.township_list')
                     </div>
-                    {{-- Job description --}}
-                    <div class="hidden p-4 rounded-lg bg-gray-50 dark:bg-mainbody-900" id="view-department"
-                        role="tabpanel" aria-labelledby="view-department-tab">
-                        <div class="bg-white dark:bg-mainbody-800 shadow rounded-lg p-6">
-                            <div>
-                                <h2 class="text-xl font-bold mb-4">Job Description</h2>
-                                <div>
-                                    <div class="grid gap-6 mb-6 md:grid-cols-2">
-                                        <div>
-                                            <label for="phone_1"
-                                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Start
-                                                Date</label>
-                                            <h4 class=" bg-gray-100 dark:bg-mainbody-700 p-2 rounded font-medium">
-                                                12/12/2023</h4>
-                                        </div>
-                                        <div>
-                                            <label for="phone_1"
-                                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Position</label>
-                                            <h4 class=" bg-gray-100 dark:bg-mainbody-700 p-2 rounded font-medium">Web
-                                                Developer</h4>
-                                        </div>
-                                        <div>
-                                            <label for="phone_1"
-                                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Department</label>
-                                            <h4 class=" bg-gray-100 dark:bg-mainbody-700 p-2 rounded font-medium">IT
-                                            </h4>
-                                        </div>
-                                        <div>
-                                            <label for="phone_1"
-                                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Branch</label>
-                                            <h4 class=" bg-gray-100 dark:bg-mainbody-700 p-2 rounded font-medium">Yangon
-                                            </h4>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <label for="phone_1"
-                                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Username</label>
-                                        <h4 class=" bg-gray-100 dark:bg-mainbody-700 p-2 rounded font-medium">
-                                            khantminkyi</h4>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                    {{-- Profile --}}
+                    {{-- Branch --}}
                     <div class="hidden p-4 rounded-lg bg-gray-50 dark:bg-mainbody-900" id="view-branch" role="tabpanel"
                         aria-labelledby="view-branch-tab">
-                        {{-- @include('admins.partial_view.location_management.city_list') --}}
+                        @include('admins.partial_view.location_management.branch.branch_list')
+                    </div>
+                    {{-- Department --}}
+                    <div class="hidden p-4 rounded-lg bg-gray-50 dark:bg-mainbody-900" id="view-department"
+                        role="tabpanel" aria-labelledby="view-department-tab">
+                        @include('admins.partial_view.location_management.department.department_list')
+
                     </div>
                 </div>
             </div>
@@ -128,47 +89,8 @@
     </section>
     @include('admins.location_management.include_city_model')
     @include('admins.location_management.include_township_model')
+    @include('admins.location_management.include_department_model')
+    @include('admins.location_management.include_branch_model')
 </div>
-<script>
-    var encryptModel = document.getElementById('encrypt-model');
-        var encryptEditModel = document.getElementById('encrypt-edit-model');
-        var encrypt = document.getElementById('checked-checkbox');
-        var encryptCheck = document.getElementById('checked-checkbox').checked;
-        function toddleEncryptModel(){
-            encryptModel.classList.toggle('hidden');
-        }
-        function toddleEncryptEditModel(){
-            encryptEditModel.classList.toggle('hidden');
-        }
-        // View Add Form For City
-        function togglePopupCityAddModel() {
-            var popupCityAddModel = document.getElementById('popup-city-add-model');
-            popupCityAddModel.classList.toggle('hidden');
-        }
-        // View User at City
-        function togglePopupCityViewModel(a) {
-            var popupCityViewModel = document.getElementById('popup-city-view-model');
-            popupCityViewModel.classList.toggle('hidden');
-            
-        }
-        function togglePopupCityEditModel() {
-            var popupCityEditModel = document.getElementById('popup-city-edit-model');
-            popupCityEditModel.classList.toggle('hidden');
-        }
-        // View Add Form For Township
-        function togglePopupTownshipAddModel() {
-        var popupTownshipAddModel = document.getElementById('popup-township-add-model');
-        popupTownshipAddModel.classList.toggle('hidden');
-        }
-        // View User at Township
-        function togglePopupTownshipViewModel(a) {
-        var popupTownshipViewModel = document.getElementById('popup-township-view-model');
-        popupTownshipViewModel.classList.toggle('hidden');
-        }
-        function togglePopupTownshipEditModel() {
-            var popupTownshipEditModel = document.getElementById('popup-township-edit-model');
-            popupTownshipEditModel.classList.toggle('hidden');
-        }
-
-</script>
+<script src="/js/admin/location_management.js"></script>
 @endsection

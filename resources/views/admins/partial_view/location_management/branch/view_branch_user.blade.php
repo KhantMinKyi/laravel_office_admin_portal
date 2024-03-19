@@ -1,4 +1,4 @@
-{{-- City User List --}}
+{{-- Branch User List --}}
 <div class="overflow-x-auto">
     <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
         <thead class="text-xs text-gray-700 uppercase bg-gray-100 dark:bg-mainbody-700 dark:text-gray-200">
@@ -18,7 +18,7 @@
                 <td class="px-4 py-5">Khant Min Kyi</td>
                 <td class="px-4 py-5">Developer</td>
                 <td class="px-4 py-5">Hlaing</td>
-                <td class="px-4 py-5">Management</td>
+                <td class="px-4 py-5">IT</td>
                 </tr>
                 @endfor
         </tbody>

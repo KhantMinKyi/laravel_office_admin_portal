@@ -7,8 +7,9 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>{{ config('app.name') }}</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <link rel="stylesheet" href="/css/global.css" type="text/css">
     {{-- Css --}}
-    @livewireStyles()
+    {{-- @livewireStyles() --}}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
         integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -44,10 +45,10 @@
                         </svg>
                     </button>
                     <a href="/admin" class="flex ms-2 md:me-24">
-                        <img src="{{ url('logo.png') }}" class="h-8 me-3" alt="Office Logo" />
-                        <span
+                        <img src="{{ url('logo-2.png') }}" class="h-14 w-26 me-3" alt="Office Logo" />
+                        {{-- <span
                             class="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap dark:text-white">Office
-                            Portal</span>
+                            Portal</span> --}}
                     </a>
                 </div>
                 <div class="flex items-center">
@@ -116,7 +117,7 @@
                 <li class="pt-4">
                     <button type="button"
                         class="flex items-center w-full p-2 text-base text-mainbody-900 transition duration-75 rounded-lg group  hover:bg-gray-100 dark:text-white dark:hover:bg-mainbody-700"
-                        aria-controls="dropdown-example" data-collapse-toggle="dropdown-example">
+                        aria-controls="dropdown-example-users" data-collapse-toggle="dropdown-example-users">
                         <i
                             class="fa-solid fa-users-gear text-lg text-gray-400 hover:text-mainbody-300 dark:hover:text-mainbody-100 "></i>
                         <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap">Users</span>
@@ -126,24 +127,24 @@
                                 d="m1 1 4 4 4-4" />
                         </svg>
                     </button>
-                    <ul id="dropdown-example" class="hidden py-2 space-y-2">
+                    <ul id="dropdown-example-users" class="hidden py-2 space-y-2">
                         <li>
 
-                            <a wire:navigate href="/admin/admin_user_list"
+                            <a href="/admin/admin_user_list"
                                 class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-mainbody-700">
                                 <i
                                     class="fa-solid fa-user-tie text-lg text-gray-400 hover:text-mainbody-300 dark:hover:text-mainbody-100 pr-2"></i>
                                 Admins</a>
                         </li>
                         <li>
-                            <a wire:navigate href="/admin/operation_user_list"
+                            <a href="/admin/operation_user_list"
                                 class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-mainbody-700">
                                 <i
                                     class="fa-solid fa-user-gear text-lg text-gray-400 hover:text-mainbody-300 dark:hover:text-mainbody-100 pr-2"></i>
                                 Operation Staffs</a>
                         </li>
                         <li>
-                            <a wire:navigate href="/admin/normal_user_list"
+                            <a href="/admin/normal_user_list"
                                 class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-mainbody-700">
                                 <i
                                     class="fa-solid fa-user text-lg text-gray-400 hover:text-mainbody-300 dark:hover:text-mainbody-100 pr-2"></i>
@@ -169,7 +170,7 @@
                     </a>
                 </li>
                 <li>
-                    <a wire:navigate href="/admin/location_management"
+                    <a href="/admin/location_management"
                         class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-mainbody-700 group">
                         <i class="fa-solid fa-location-dot text-lg text-gray-400"></i>
                         <span class="flex-1 ms-3 whitespace-nowrap">Location Management</span>
@@ -196,7 +197,7 @@
     </aside>
 
 
-    <div class=" flex  flex-row-reverse  pt-12 ">
+    <div class=" flex  flex-row-reverse  pt-20 ">
     </div>
     <div class="sm:ml-64">
         @yield('content')
@@ -259,7 +260,7 @@
         }
     </script>
     <script data-navigate-track src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.js"></script>
-    @livewireScripts()
+    {{-- @livewireScripts() --}}
 </body>
 
 </html>
