@@ -45,7 +45,7 @@
                         </svg>
                     </button>
                     <a href="/admin" class="flex ms-2 md:me-24">
-                        <img src="{{ url('logo-2.png') }}" class="h-14 w-26 me-3" alt="Office Logo" />
+                        <img src="{{ url('logo.png') }}" class="h-14 w-26 me-3" alt="Office Logo" id="logo-img" />
                         {{-- <span
                             class="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap dark:text-white">Office
                             Portal</span> --}}
@@ -210,6 +210,7 @@
         var modeSwitcherElement = document.querySelector('.mode_switcher');
         // Create a new div element and set its innerHTML to the provided code
         var newDiv = document.createElement('div');
+        var logoImg = document.getElementById('logo-img');
 
 
         if (document.documentElement) {
@@ -232,6 +233,7 @@
             <i class="fa-regular fa-moon text-lg dark:text-mainbody-200"></i>
         </label>
     `;
+    logoImg.setAttribute('src', '{{ url('logo-dark-mode.png') }}');
             } else if (themeMode === 'light') {
                 newDiv.innerHTML = `
         <label class="relative inline-flex items-center cursor-pointer">
@@ -242,6 +244,7 @@
             <i class="fa-regular fa-moon text-lg dark:text-mainbody-200"></i>
         </label>
     `;
+    logoImg.setAttribute('src', '{{ url('logo.png') }}');
             }
             modeSwitcherElement.appendChild(newDiv);
             document.documentElement.classList.add(themeMode);
@@ -249,13 +252,18 @@
     </script>
     <script>
         function switchMode() {
+            var logoImg = document.getElementById('logo-img');
+
+            // Set the new source URL
             const switchtest = document.getElementById('switch');
             if (switchtest.checked == true) {
                 window.localStorage.setItem('data-theme', 'dark');
                 document.documentElement.classList.add('dark');
+                logoImg.setAttribute('src', '{{ url('logo-dark-mode.png') }}');
             } else {
                 window.localStorage.setItem('data-theme', 'light');
                 document.documentElement.classList.remove('dark');
+                logoImg.setAttribute('src', '{{ url('logo.png') }}');
             }
         }
     </script>

@@ -1,5 +1,5 @@
 {{-- Popup Department Add Model --}}
-<div class="hidden fixed top-1/3 right-5 bottom-0 xl:left-72 md:left-1/4 overflow-y-auto"
+<div class="hidden fixed top-32 right-5 bottom-0 xl:left-72 md:left-1/4 overflow-y-auto"
     id="popup-department-add-model">
     <div class="fixed top-10 right-0 bottom-0 left-0 bg-black opacity-50">
     </div>
@@ -23,7 +23,7 @@
     </div>
 </div>
 {{-- Popup Department View Model --}}
-<div class="hidden fixed top-16 right-5 bottom-0 xl:left-72 md:left-1/4 overflow-y-auto"
+<div class="hidden fixed top-32 right-5 bottom-0 xl:left-72 md:left-1/4 overflow-y-auto"
     id="popup-department-view-model">
     <div class="fixed top-10 right-0 bottom-0 left-0 bg-black opacity-50">
     </div>
@@ -42,7 +42,7 @@
     </div>
 </div>
 {{-- Popup Edit Model --}}
-<div class="hidden fixed top-1/3 right-5 bottom-0 xl:left-72 md:left-1/4 overflow-y-auto"
+<div class="hidden fixed top-32 right-5 bottom-0 xl:left-72 md:left-1/4 overflow-y-auto"
     id="popup-department-edit-model">
     <div class="fixed top-10 right-0 bottom-0 left-0 bg-black opacity-50">
     </div>

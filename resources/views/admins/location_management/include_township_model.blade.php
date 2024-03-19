@@ -1,5 +1,5 @@
 {{-- Popup Township Add Model --}}
-<div class="hidden fixed top-1/3 right-5 bottom-0 xl:left-72 md:left-1/4 overflow-y-auto" id="popup-township-add-model">
+<div class="hidden fixed top-32 right-5 bottom-0 xl:left-72 md:left-1/4 overflow-y-auto" id="popup-township-add-model">
     <div class="fixed top-10 right-0 bottom-0 left-0 bg-black opacity-50">
     </div>
     <div class="flex items-center justify-center">
@@ -22,7 +22,7 @@
     </div>
 </div>
 {{-- Popup Township View Model --}}
-<div class="hidden fixed top-16 right-5 bottom-0 xl:left-72 md:left-1/4 overflow-y-auto" id="popup-township-view-model">
+<div class="hidden fixed top-32 right-5 bottom-0 xl:left-72 md:left-1/4 overflow-y-auto" id="popup-township-view-model">
     <div class="fixed top-10 right-0 bottom-0 left-0 bg-black opacity-50">
     </div>
     <div class="flex items-center justify-center">
@@ -40,8 +40,7 @@
     </div>
 </div>
 {{-- Popup Edit Model --}}
-<div class="hidden fixed top-1/3 right-5 bottom-0 xl:left-72 md:left-1/4 overflow-y-auto"
-    id="popup-township-edit-model">
+<div class="hidden fixed top-32 right-5 bottom-0 xl:left-72 md:left-1/4 overflow-y-auto" id="popup-township-edit-model">
     <div class="fixed top-10 right-0 bottom-0 left-0 bg-black opacity-50">
     </div>
     <div class="flex items-center justify-center">
