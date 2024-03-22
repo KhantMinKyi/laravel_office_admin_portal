@@ -48,22 +48,23 @@
                 </tr>
             </thead>
             <tbody>
-                @for ($i = 0 ; $i < 10 ; $i++) <tr
+                @foreach ($townships as $township_key => $township)
+                <tr
                     class="border-b dark:border-gray-700 hover:text-white hover:bg-mainbody-300 dark:hover:bg-mainbody-700 hover:cursor-pointer">
                     <th scope="row" class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                        {{$i + 1}}</th>
-                    <td class="px-4 py-3">Hlaing</td>
-                    <td class="px-4 py-3">Yangon</td>
+                        {{$township_key + 1}}</th>
+                    <td class="px-4 py-3">{{$township->name}}</td>
+                    <td class="px-4 py-3">{{$township->city->name}}</td>
                     <td class="px-4 py-3">132</td>
                     <td class="px-4 py-3 flex items-center justify-end">
                         {{-- view button --}}
-                        <button onclick="togglePopupTownshipViewModel({{$i}})">
+                        <button onclick="togglePopupTownshipViewModel({{$township_key}})">
                             <i
                                 class="fa-regular fa-eye text-mainbody-100 hover:text-white  dark:text-mainbody-400 mr-1"></i>
                         </button>
                         {{-- view dot --}}
-                        <button id="township-imac-{{$i}}-dropdown-button"
-                            data-dropdown-toggle="township-imac-{{$i}}-dropdown"
+                        <button id="township-imac-{{$township_key}}-dropdown-button"
+                            data-dropdown-toggle="township-imac-{{$township_key}}-dropdown"
                             class="inline-flex items-center p-0.5 text-sm font-medium text-center text-gray-500 hover:text-gray-800 rounded-lg focus:outline-none dark:text-gray-400 dark:hover:text-gray-100"
                             type="button">
                             <svg class="w-5 h-5" aria-hidden="true" fill="currentColor" viewbox="0 0 20 20"
@@ -72,7 +73,7 @@
                                     d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z" />
                             </svg>
                         </button>
-                        <div id="township-imac-{{$i}}-dropdown"
+                        <div id="township-imac-{{$township_key}}-dropdown"
                             class="hidden z-10 w-44 bg-white rounded divide-y divide-gray-100 shadow dark:bg-mainbody-700 dark:divide-mainbody-600">
                             <ul class="py-1 text-sm text-gray-700 dark:text-gray-200"
                                 aria-labelledby="township-imac-27-dropdown-button">
@@ -92,8 +93,8 @@
                             </div>
                         </div>
                     </td>
-                    </tr>
-                    @endfor
+                </tr>
+                @endforeach
             </tbody>
         </table>
     </div>
