@@ -5,15 +5,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Township extends Model
+class Branch extends Model
 {
     use HasFactory;
-    protected $fillable = ['name','city_id'];
+
+    protected $fillable =['name','city_id','township_id','address'];
 
     public function city(){
         return $this->belongsTo(City::class);
     }
-    public function branches(){
-        return $this->hasMany(Branch::class);
+    public function township(){
+        return $this->belongsTo(Township::class);
     }
 }

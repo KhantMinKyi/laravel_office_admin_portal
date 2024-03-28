@@ -13,4 +13,7 @@ class City extends Model
     public function townships(){
         return $this->hasMany(Township::class);
     }
+    public function branches(){
+        return $this->hasMany(Branch::class);
+    }
 }
