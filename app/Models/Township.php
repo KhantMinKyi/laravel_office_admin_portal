@@ -16,4 +16,7 @@ class Township extends Model
     public function branches(){
         return $this->hasMany(Branch::class);
     }
+    public function users(){
+        return $this->hasMany(User::class);
+    }
 }
