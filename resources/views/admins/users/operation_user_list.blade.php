@@ -2,7 +2,7 @@
 
 @section('content')
 <?php
-session(['error' => 'This is Error']);
+// session(['error' => 'This is Error']);
 ?>
 {{-- Operation user List table --}}
 <div class="p-4  relative " wire:key='operation-user-list'>

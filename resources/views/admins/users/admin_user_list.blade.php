@@ -2,7 +2,7 @@
 
 @section('content')
 <?php
-session(['error' => 'This is Error']);
+// session(['error' => 'This is Error']);
 ?>
 {{-- Admin User List table --}}
 <div class="p-4  relative " wire:key='admin-user-list'>
@@ -79,8 +79,8 @@ session(['error' => 'This is Error']);
                         <thead
                             class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-mainbody-700 dark:text-gray-200">
                             <tr>
-                                <th scope="col" class="px-4 py-3 text-sm font-semibold">User Name</th>
                                 <th scope="col" class="px-4 py-3 text-sm font-semibold">Name</th>
+                                <th scope="col" class="px-4 py-3 text-sm font-semibold">User Name</th>
                                 <th scope="col" class="px-4 py-3 text-sm font-semibold">Email</th>
                                 <th scope="col" class="px-4 py-3 text-sm font-semibold">Department</th>
                                 <th scope="col" class="px-4 py-3 text-sm font-semibold">Position</th>
@@ -95,8 +95,8 @@ session(['error' => 'This is Error']);
                                 class="border-b dark:border-gray-700 hover:text-white hover:bg-mainbody-300 dark:hover:bg-mainbody-700 hover:cursor-pointer">
                                 <th scope="row"
                                     class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                    {{$admin_user->user_name}}</th>
-                                <td class="px-4 py-3">{{$admin_user->full_name}}</td>
+                                    {{$admin_user->full_name}}</th>
+                                <td class="px-4 py-3">{{$admin_user->user_name}}</td>
                                 <td class="px-4 py-3">{{$admin_user->email}}</td>
                                 <td class="px-4 py-3">{{$admin_user->department->name}}</td>
                                 <td class="px-4 py-3">{{$admin_user->position}}</td>
@@ -224,11 +224,7 @@ session(['error' => 'This is Error']);
         </div>
     </div>
     {{-- Popup View Model --}}
-    <div>
-        <div class="hidden fixed top-32 right-5 bottom-0 xl:left-72 md:left-1/4 overflow-y-auto" id="popup-view-model">
-            {{-- Include User View --}}
-            {{-- @include('admins.partial_view.users.admin_user.view_user') --}}
-        </div>
+    <div class="hidden fixed top-32 right-5 bottom-0 xl:left-72 md:left-1/4 overflow-y-auto" id="popup-view-model">
     </div>
     {{-- Popup Edit Model --}}
     <div class="hidden fixed top-32 right-5 bottom-0 xl:left-72 md:left-1/4 overflow-y-auto" id="popup-edit-model">
