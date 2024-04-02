@@ -100,9 +100,9 @@ session(['error' => 'This is Error']);
                                 <td class="px-4 py-3">{{$admin_user->email}}</td>
                                 <td class="px-4 py-3">{{$admin_user->department->name}}</td>
                                 <td class="px-4 py-3">{{$admin_user->position}}</td>
-                                <td class="px-4 py-3 flex items-center justify-end">
+                                <td class="px-4 py-3 flex items-center justify-end" data-id="{{$admin_user->id}}">
                                     {{-- view button --}}
-                                    <button onclick="togglePopupViewModel({{$key}})">
+                                    <button id="togglePopupViewModel">
                                         <i
                                             class="fa-regular fa-eye text-mainbody-100 hover:text-white  dark:text-mainbody-400 mr-1"></i>
                                     </button>
@@ -224,21 +224,10 @@ session(['error' => 'This is Error']);
         </div>
     </div>
     {{-- Popup View Model --}}
-    <div class="hidden fixed top-32 right-5 bottom-0 xl:left-72 md:left-1/4 overflow-y-auto" id="popup-view-model">
-        <div class="fixed top-10 right-0 bottom-0 left-0 bg-black opacity-50">
-        </div>
-        <div class="flex items-center justify-center">
-            <div class="p-10 bg-gray-50 text-black dark:bg-mainbody-900 dark:text-white relative rounded">
-                <button class="absolute top-0 right-0 px-4 pt-4 " onclick="togglePopupViewModel()">
-                    <svg xmlns="http://www.w3.org/2000/svg" height="16" width="12" viewBox="0 0 384 512">
-                        <!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
-                        <path
-                            d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z" />
-                    </svg>
-                </button>
-                {{-- Include User View --}}
-                @include('admins.partial_view.users.admin_user.view_user')
-            </div>
+    <div>
+        <div class="hidden fixed top-32 right-5 bottom-0 xl:left-72 md:left-1/4 overflow-y-auto" id="popup-view-model">
+            {{-- Include User View --}}
+            {{-- @include('admins.partial_view.users.admin_user.view_user') --}}
         </div>
     </div>
     {{-- Popup Edit Model --}}
@@ -265,5 +254,8 @@ session(['error' => 'This is Error']);
         </div>
     </div>
 </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"
+    integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="/js/admin/user/admin_user.js"></script>
 @endsection

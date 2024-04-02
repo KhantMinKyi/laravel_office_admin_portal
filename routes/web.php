@@ -1,7 +1,6 @@
 <?php
 
 use App\Http\Controllers\LocationManagementController;
-use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,10 +22,7 @@ Route::prefix('admin')->group(function () {
     Route::get('/', function () {
         return view('admins.admin_index');
     });
-    // Route::get('/admin_user_list', function () {
-    //     return view('admins.users.admin_user_list');
-    // });
-    Route::get('/admin_user_list',[UserController::class,'adminUserList']);
+    include __DIR__.'/route_groups/users/admin_user.php';
     Route::get('/normal_user_list', function () {
         return view('admins.users.normal_user_list');
     });

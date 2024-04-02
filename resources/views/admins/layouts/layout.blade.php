@@ -200,6 +200,9 @@
     <div class=" flex  flex-row-reverse  pt-20 ">
     </div>
     <div class="sm:ml-64">
+        <div class="loader-container hidden">
+            <div class="loader"></div>
+        </div>
         @yield('content')
     </div>
     {{-- Javascript --}}
@@ -269,6 +272,7 @@
     </script>
     <script data-navigate-track src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.js"></script>
     {{-- @livewireScripts() --}}
+    <script src="/js/admin/layout/helper.js"></script>
 </body>
 
 </html>
