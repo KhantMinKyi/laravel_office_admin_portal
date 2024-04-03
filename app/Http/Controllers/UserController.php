@@ -14,7 +14,7 @@ class UserController extends Controller
 {
 
     public function adminUserList(){
-        $admin_users =User::with('city','township','branch','department')->get();
+        $admin_users =User::with('city','township','branch','department')->paginate(2);
         $cities = City::select('id','name')->get();
         $townships = Township::select('id','name')->get();
         $branches = Branch::select('id','name')->get();
