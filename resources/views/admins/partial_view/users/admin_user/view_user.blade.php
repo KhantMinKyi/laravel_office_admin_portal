@@ -20,13 +20,13 @@
                                 <div class="bg-white dark:bg-mainbody-800 shadow rounded-lg p-6">
                                     <div class="flex flex-col items-center">
                                         <img src="" class="w-32 h-32 bg-gray-300 rounded-full mb-4 shrink-0">
-                                        <h1 class="text-xl font-bold">{{$admin_user->full_name}}</h1>
-                                        <p class="text-gray-700 dark:text-gray-300">{{$admin_user->position}}</p>
+                                        <h1 class="text-xl font-bold">{{ $admin_user->full_name }}</h1>
+                                        <p class="text-gray-700 dark:text-gray-300">{{ $admin_user->position }}</p>
                                         <div class="mt-6 flex flex-wrap gap-4 justify-center">
-                                            <p class="text-gray-700 dark:text-gray-300">{{$admin_user->branch->name}}
+                                            <p class="text-gray-700 dark:text-gray-300">{{ $admin_user->branch->name }}
                                             </p>
                                             <p class="text-gray-700 dark:text-gray-300">
-                                                {{$admin_user->department->name}}</p>
+                                                {{ $admin_user->department->name }}</p>
                                         </div>
                                     </div>
                                     <hr class="my-6 border-t border-gray-300">
@@ -37,13 +37,13 @@
                                             <li class="mb-2">
                                                 <div class="grid mb-6  font-semibold text-gray-400">
                                                     <h5>Username</h5>
-                                                    <h5>{{$admin_user->user_name}}</h5>
+                                                    <h5>{{ $admin_user->username }}</h5>
                                                     <div>
                                             </li>
                                             <li class="mb-2">
                                                 <div class="grid mb-6  font-semibold text-gray-400 overflow-hidden">
                                                     <h5>Email</h5>
-                                                    <h5>{{$admin_user->email}}</h5>
+                                                    <h5>{{ $admin_user->email }}</h5>
                                                     <div>
                                             </li>
                                         </ul>
@@ -89,7 +89,7 @@
                                                                 Name</label>
                                                             <h4
                                                                 class=" bg-gray-100 dark:bg-mainbody-700 p-2 rounded font-medium">
-                                                                {{$admin_user->first_name}} </h4>
+                                                                {{ $admin_user->first_name }} </h4>
                                                         </div>
                                                         <div>
                                                             <label for="last_name"
@@ -97,7 +97,7 @@
                                                                 Name</label>
                                                             <h4
                                                                 class=" bg-gray-100 dark:bg-mainbody-700 p-2 rounded font-medium">
-                                                                {{$admin_user->last_name}}</h4>
+                                                                {{ $admin_user->last_name }}</h4>
                                                         </div>
                                                         <div>
                                                             <label for="date_of_birth"
@@ -105,7 +105,7 @@
                                                                 Of Birth</label>
                                                             <h4
                                                                 class=" bg-gray-100 dark:bg-mainbody-700 p-2 rounded font-medium">
-                                                                {{date('d.m.Y',strToTime($admin_user->date_of_birth))}}
+                                                                {{ date('d.m.Y', strToTime($admin_user->date_of_birth)) }}
                                                             </h4>
                                                         </div>
                                                         <div>
@@ -113,28 +113,28 @@
                                                                 class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">NRC</label>
                                                             <h4
                                                                 class=" bg-gray-100 dark:bg-mainbody-700 p-2 rounded font-medium">
-                                                                {{$admin_user->nrc}}</h4>
+                                                                {{ $admin_user->nrc }}</h4>
                                                         </div>
                                                         <div>
                                                             <label for="gender"
                                                                 class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Gender</label>
                                                             <h4
                                                                 class=" bg-gray-100 dark:bg-mainbody-700 p-2 rounded font-medium">
-                                                                {{$admin_user->gender}} </h4>
+                                                                {{ $admin_user->gender }} </h4>
                                                         </div>
                                                         <div>
                                                             <label for="nationality"
                                                                 class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nationality</label>
                                                             <h4
                                                                 class=" bg-gray-100 dark:bg-mainbody-700 p-2 rounded font-medium">
-                                                                {{$admin_user->nationality}}</h4>
+                                                                {{ $admin_user->nationality }}</h4>
                                                         </div>
                                                         <div>
                                                             <label for="degree"
                                                                 class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Degree</label>
                                                             <h4
                                                                 class=" bg-gray-100 dark:bg-mainbody-700 p-2 rounded font-medium">
-                                                                {{$admin_user->degree ?? '-'}}
+                                                                {{ $admin_user->degree ?? '-' }}
                                                             </h4>
                                                         </div>
                                                         <div>
@@ -143,7 +143,7 @@
                                                                 Status</label>
                                                             <h4
                                                                 class=" bg-gray-100 dark:bg-mainbody-700 p-2 rounded font-medium">
-                                                                {{$admin_user->marital_status}}</h4>
+                                                                {{ $admin_user->marital_status }}</h4>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -164,7 +164,7 @@
                                                                 1</label>
                                                             <h4
                                                                 class=" bg-gray-100 dark:bg-mainbody-700 p-2 rounded font-medium">
-                                                                {{$admin_user->phone_1}}</h4>
+                                                                {{ $admin_user->phone_1 }}</h4>
                                                         </div>
                                                         <div>
                                                             <label for="phone_2"
@@ -172,35 +172,35 @@
                                                                 2</label>
                                                             <h4
                                                                 class=" bg-gray-100 dark:bg-mainbody-700 p-2 rounded font-medium">
-                                                                {{$admin_user->phone_2 ?? "-"}}</h4>
+                                                                {{ $admin_user->phone_2 ?? '-' }}</h4>
                                                         </div>
                                                         <div>
                                                             <label for="email"
                                                                 class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email</label>
                                                             <h4
                                                                 class=" bg-gray-100 dark:bg-mainbody-700 p-2 rounded font-medium">
-                                                                {{$admin_user->email}}</h4>
+                                                                {{ $admin_user->email }}</h4>
                                                         </div>
                                                         <div>
                                                             <label for="address"
                                                                 class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Address</label>
                                                             <h4
                                                                 class=" bg-gray-100 dark:bg-mainbody-700 p-2 rounded font-medium">
-                                                                {{$admin_user->address}}</h4>
+                                                                {{ $admin_user->address }}</h4>
                                                         </div>
                                                         <div>
                                                             <label for="city"
                                                                 class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">City</label>
                                                             <h4
                                                                 class=" bg-gray-100 dark:bg-mainbody-700 p-2 rounded font-medium">
-                                                                {{$admin_user->city->name}}</h4>
+                                                                {{ $admin_user->city->name }}</h4>
                                                         </div>
                                                         <div>
                                                             <label for="township"
                                                                 class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Township</label>
                                                             <h4
                                                                 class=" bg-gray-100 dark:bg-mainbody-700 p-2 rounded font-medium">
-                                                                {{$admin_user->township->name}}</h4>
+                                                                {{ $admin_user->township->name }}</h4>
                                                         </div>
                                                         <div>
                                                             <label for="father_name"
@@ -208,7 +208,7 @@
                                                                 name</label>
                                                             <h4
                                                                 class=" bg-gray-100 dark:bg-mainbody-700 p-2 rounded font-medium">
-                                                                {{$admin_user->father_name}}</h4>
+                                                                {{ $admin_user->father_name }}</h4>
                                                         </div>
                                                         <div>
                                                             <label for="contact_phone"
@@ -216,7 +216,7 @@
                                                                 Phone</label>
                                                             <h4
                                                                 class=" bg-gray-100 dark:bg-mainbody-700 p-2 rounded font-medium">
-                                                                {{$admin_user->contact_phone ?? '-'}}</h4>
+                                                                {{ $admin_user->contact_phone ?? '-' }}</h4>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -237,21 +237,21 @@
                                                                 Date</label>
                                                             <h4
                                                                 class=" bg-gray-100 dark:bg-mainbody-700 p-2 rounded font-medium">
-                                                                {{$admin_user->start_date}}</h4>
+                                                                {{ $admin_user->start_date }}</h4>
                                                         </div>
                                                         <div>
                                                             <label for="position"
                                                                 class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Position</label>
                                                             <h4
                                                                 class=" bg-gray-100 dark:bg-mainbody-700 p-2 rounded font-medium">
-                                                                {{$admin_user->position}}</h4>
+                                                                {{ $admin_user->position }}</h4>
                                                         </div>
                                                         <div>
                                                             <label for="department"
                                                                 class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Department</label>
                                                             <h4
                                                                 class=" bg-gray-100 dark:bg-mainbody-700 p-2 rounded font-medium">
-                                                                {{$admin_user->department->name}}
+                                                                {{ $admin_user->department->name }}
                                                             </h4>
                                                         </div>
                                                         <div>
@@ -259,15 +259,15 @@
                                                                 class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Branch</label>
                                                             <h4
                                                                 class=" bg-gray-100 dark:bg-mainbody-700 p-2 rounded font-medium">
-                                                                {{$admin_user->branch->name}}</h4>
+                                                                {{ $admin_user->branch->name }}</h4>
                                                         </div>
                                                     </div>
                                                     <div>
-                                                        <label for="user_name"
+                                                        <label for="username"
                                                             class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Username</label>
                                                         <h4
                                                             class=" bg-gray-100 dark:bg-mainbody-700 p-2 rounded font-medium">
-                                                            {{$admin_user->user_name}}</h4>
+                                                            {{ $admin_user->username }}</h4>
                                                     </div>
                                                 </div>
                                             </div>

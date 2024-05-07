@@ -32,7 +32,7 @@
     </ul>
 </div>
 <div id="default-tab-content">
-    <form method="post" action="{{url('/admin/admin_user_list/store-admin_user')}}">
+    <form method="post" action="{{ url('/admin/admin_user_list/store-admin_user') }}">
         @csrf
         {{-- Profile --}}
         <div class="hidden p-4 rounded-lg bg-gray-50 dark:bg-mainbody-800" id="profile" role="tabpanel"
@@ -61,7 +61,8 @@
                         placeholder="Date of Birth" required>
                 </div>
                 <div>
-                    <label for="nrc" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">NRC</label>
+                    <label for="nrc"
+                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">NRC</label>
                     <input type="text" id="nrc" name="nrc"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-mainbody-300 focus:border-mainbody-300 block w-full p-2.5 dark:bg-mainbody-700 dark:border-mainbody-800 dark:placeholder-mainbody-300 dark:text-white dark:focus:ring-mainbody-600 dark:focus:border-mainbody-600"
                         placeholder="Enter NRC" required>
@@ -144,7 +145,7 @@
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-mainbody-300 focus:border-mainbody-300 block w-full p-2.5 dark:bg-mainbody-700 dark:border-mainbody-600 dark:placeholder-mainbody-300 dark:text-white dark:focus:ring-mainbody-800 dark:focus:border-mainbody-800">
                         <option selected disabled>Select City</option>
                         @foreach ($cities as $city)
-                        <option value="{{$city->id}}">{{$city->name}}</option>
+                            <option value="{{ $city->id }}">{{ $city->name }}</option>
                         @endforeach
                     </select>
                 </div>
@@ -155,7 +156,7 @@
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-mainbody-300 focus:border-mainbody-300 block w-full p-2.5 dark:bg-mainbody-700 dark:border-mainbody-600 dark:placeholder-mainbody-300 dark:text-white dark:focus:ring-mainbody-800 dark:focus:border-mainbody-800">
                         <option selected disabled>Select Township</option>
                         @foreach ($townships as $township)
-                        <option value="{{$township->id}}">{{$township->name}}</option>
+                            <option value="{{ $township->id }}">{{ $township->name }}</option>
                         @endforeach
                     </select>
                 </div>
@@ -166,7 +167,8 @@
             aria-labelledby="settings-tab">
             <div class="grid gap-6 mb-6 md:grid-cols-2">
                 <div>
-                    <label for="father_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Father
+                    <label for="father_name"
+                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Father
                         name</label>
                     <input type="text" id="father_name" name="father_name"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-mainbody-300 focus:border-mainbody-300 block w-full p-2.5 dark:bg-mainbody-700 dark:border-mainbody-800 dark:placeholder-mainbody-300 dark:text-white dark:focus:ring-mainbody-600 dark:focus:border-mainbody-600"
@@ -207,7 +209,7 @@
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-mainbody-300 focus:border-mainbody-300 block w-full p-2.5 dark:bg-mainbody-700 dark:border-mainbody-600 dark:placeholder-mainbody-300 dark:text-white dark:focus:ring-mainbody-800 dark:focus:border-mainbody-800">
                     <option selected disabled>Select Department</option>
                     @foreach ($departments as $department)
-                    <option value="{{$department->id}}">{{$department->name}}</option>
+                        <option value="{{ $department->id }}">{{ $department->name }}</option>
                     @endforeach
                 </select>
             </div>
@@ -218,7 +220,7 @@
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-mainbody-300 focus:border-mainbody-300 block w-full p-2.5 dark:bg-mainbody-700 dark:border-mainbody-600 dark:placeholder-mainbody-300 dark:text-white dark:focus:ring-mainbody-800 dark:focus:border-mainbody-800">
                     <option selected disabled>Select Branch</option>
                     @foreach ($branches as $branch)
-                    <option value="{{$branch->id}}">{{$branch->name}}</option>
+                        <option value="{{ $branch->id }}">{{ $branch->name }}</option>
                     @endforeach
                 </select>
             </div>
@@ -228,13 +230,13 @@
             aria-labelledby="account-tab">
             <div class="grid gap-6 mb-6 md:grid-cols-2">
                 <div>
-                    <label for="user_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">User
+                    <label for="username" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">User
                         Name</label>
-                    <input type="text" id="user_name" name="user_name"
+                    <input type="text" id="username" name="username"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-mainbody-300 focus:border-mainbody-300 block w-full p-2.5 dark:bg-mainbody-700 dark:border-mainbody-800 dark:placeholder-mainbody-300 dark:text-white dark:focus:ring-mainbody-600 dark:focus:border-mainbody-600"
                         placeholder="Enter Username" required>
-                    @error('user_name')
-                    <span class="text-sm text-red-600 dark:text-red-500">{{$message}}</span>
+                    @error('username')
+                        <span class="text-sm text-red-600 dark:text-red-500">{{ $message }}</span>
                     @enderror
                 </div>
                 <div>
@@ -248,7 +250,8 @@
             <div class="flex items-center">
                 <input onclick="toddleEncryptModel()" checked id="checked-checkbox" type="checkbox" value=""
                     class="w-4 h-4 text-mainbody-600 bg-gray-100 border-gray-300 rounded focus:ring-mainbody-500 dark:focus:ring-mainbody-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                <label for="checked-checkbox" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Will You
+                <label for="checked-checkbox" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Will
+                    You
                     Encrypt?</label>
             </div>
             <div class="encrypt-model " id="encrypt-model">

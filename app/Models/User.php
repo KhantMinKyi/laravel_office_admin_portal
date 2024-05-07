@@ -18,7 +18,7 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'user_name',
+        'username',
         'password',
         'first_name',
         'last_name',
@@ -63,16 +63,20 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
-    public function city(){
+    public function city()
+    {
         return $this->belongsTo(City::class);
     }
-    public function township(){
+    public function township()
+    {
         return $this->belongsTo(Township::class);
     }
-    public function branch(){
+    public function branch()
+    {
         return $this->belongsTo(Branch::class);
     }
-    public function department(){
+    public function department()
+    {
         return $this->belongsTo(Department::class);
     }
 }

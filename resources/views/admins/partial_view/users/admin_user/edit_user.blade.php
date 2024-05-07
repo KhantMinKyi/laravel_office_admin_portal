@@ -2,9 +2,8 @@
     <ul class="flex flex-wrap -mb-px text-sm font-medium text-center" id="default-tab"
         data-tabs-toggle="#default-tab-content" role="tablist">
         <li class="me-2" role="presentation">
-            <button class="inline-block p-4 border-b-2 rounded-t-lg" id="edit-profile-tab"
-                data-tabs-target="#edit-profile" type="button" role="tab" aria-controls="edit-profile"
-                aria-selected="false">Profile</button>
+            <button class="inline-block p-4 border-b-2 rounded-t-lg" id="edit-profile-tab" data-tabs-target="#edit-profile"
+                type="button" role="tab" aria-controls="edit-profile" aria-selected="false">Profile</button>
         </li>
         <li class="me-2" role="contact">
             <button
@@ -15,8 +14,8 @@
         <li class="me-2" role="family">
             <button
                 class="inline-block p-4 border-b-2 rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300"
-                id="edit-family-tab" data-tabs-target="#edit-family" type="button" role="tab" aria-controls="settings"
-                aria-selected="false">Family</button>
+                id="edit-family-tab" data-tabs-target="#edit-family" type="button" role="tab"
+                aria-controls="settings" aria-selected="false">Family</button>
         </li>
         <li role="job">
             <button
@@ -27,8 +26,8 @@
         <li role="account">
             <button
                 class="inline-block p-4 border-b-2 rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300"
-                id="edit-account-tab" data-tabs-target="#edit-account" type="button" role="tab" aria-controls="account"
-                aria-selected="false">Account</button>
+                id="edit-account-tab" data-tabs-target="#edit-account" type="button" role="tab"
+                aria-controls="account" aria-selected="false">Account</button>
         </li>
     </ul>
 </div>
@@ -45,7 +44,7 @@
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-mainbody-300 focus:border-mainbody-300 block w-full p-2.5 dark:bg-mainbody-700 dark:border-mainbody-800 dark:placeholder-mainbody-300 dark:text-white dark:focus:ring-mainbody-600 dark:focus:border-mainbody-600"
                         placeholder="Enter First Name" required>
                     @if ($errors->has('email'))
-                    <span class="text-sm text-red-600 dark:text-red-500">{{errors('message')}}</span>
+                        <span class="text-sm text-red-600 dark:text-red-500">{{ errors('message') }}</span>
                     @endif
                 </div>
                 <div>
@@ -64,7 +63,8 @@
                         placeholder="Date of Birth" required>
                 </div>
                 <div>
-                    <label for="nrc" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">NRC</label>
+                    <label for="nrc"
+                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">NRC</label>
                     <input type="text" id="edit_nrc"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-mainbody-300 focus:border-mainbody-300 block w-full p-2.5 dark:bg-mainbody-700 dark:border-mainbody-800 dark:placeholder-mainbody-300 dark:text-white dark:focus:ring-mainbody-600 dark:focus:border-mainbody-600"
                         placeholder="Enter NRC" required>
@@ -141,7 +141,8 @@
                         placeholder="Enter Address" required>
                 </div>
                 <div>
-                    <label for="city" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">City</label>
+                    <label for="city"
+                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">City</label>
                     <select id="edit_select_city"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-mainbody-300 focus:border-mainbody-300 block w-full p-2.5 dark:bg-mainbody-700 dark:border-mainbody-600 dark:placeholder-mainbody-300 dark:text-white dark:focus:ring-mainbody-800 dark:focus:border-mainbody-800">
                         <option selected disabled>Select City</option>
@@ -166,7 +167,8 @@
             aria-labelledby="edit-family-tab">
             <div class="grid gap-6 mb-6 md:grid-cols-2">
                 <div>
-                    <label for="father_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Father
+                    <label for="father_name"
+                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Father
                         name</label>
                     <input type="text" id="edit__father_name"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-mainbody-300 focus:border-mainbody-300 block w-full p-2.5 dark:bg-mainbody-700 dark:border-mainbody-800 dark:placeholder-mainbody-300 dark:text-white dark:focus:ring-mainbody-600 dark:focus:border-mainbody-600"
@@ -226,9 +228,9 @@
             aria-labelledby="edit-account-tab">
             <div class="grid gap-6 mb-6 md:grid-cols-2">
                 <div>
-                    <label for="user_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">User
+                    <label for="username" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">User
                         Name</label>
-                    <input type="text" id="edit_user_name"
+                    <input type="text" id="edit_username"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-mainbody-300 focus:border-mainbody-300 block w-full p-2.5 dark:bg-mainbody-700 dark:border-mainbody-800 dark:placeholder-mainbody-300 dark:text-white dark:focus:ring-mainbody-600 dark:focus:border-mainbody-600"
                         placeholder="Enter Username" required>
                 </div>
@@ -241,9 +243,11 @@
                 </div>
             </div>
             <div class="flex items-center">
-                <input onclick="toddleEncryptEditModel()" checked id="edit-checked-checkbox" type="checkbox" value=""
+                <input onclick="toddleEncryptEditModel()" checked id="edit-checked-checkbox" type="checkbox"
+                    value=""
                     class="w-4 h-4 text-mainbody-600 bg-gray-100 border-gray-300 rounded focus:ring-mainbody-500 dark:focus:ring-mainbody-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                <label for="checked-checkbox" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Will You
+                <label for="checked-checkbox" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Will
+                    You
                     Encrypt?</label>
             </div>
             <div class="encrypt-model " id="encrypt-edit-model">

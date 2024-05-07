@@ -45,7 +45,7 @@
                             </path>
                         </svg>
                     </button>
-                    <a href="/admin" class="flex ms-2 md:me-24">
+                    <a href="/user" class="flex ms-2 md:me-24">
                         <img src="{{ url('logo.png') }}" class="h-14 w-26 me-3" alt="Office Logo" id="logo-img" />
                         {{-- <span
                             class="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap dark:text-white">Office
@@ -85,7 +85,7 @@
                                         role="menuitem">Earnings</a>
                                 </li>
                                 <li>
-                                    <a href="#"
+                                    <a href="/logout"
                                         class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-mainbody-600 dark:hover:text-white"
                                         role="menuitem">Sign out</a>
                                 </li>
@@ -102,7 +102,7 @@
         <div class="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-mainbody-800">
             <ul class="space-y-2 font-medium">
                 <li class="pb-4">
-                    <a href="/admin"
+                    <a href="/user"
                         class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-mainbody-700 group">
                         <svg class="w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
                             aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
