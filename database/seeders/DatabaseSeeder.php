@@ -15,18 +15,18 @@ class DatabaseSeeder extends Seeder
         // \App\Models\User::factory(10)->create();
 
         \App\Models\User::create([
-            'email' => 'test@example.com',
-            'username' => 'user',
+            'email' => 'admin@gmail.com',
+            'username' => 'admin',
             'password' => bcrypt('12345'),
             'first_name' => 'first_name',
             'last_name' => 'last_name',
             'full_name' => 'full_name',
             'date_of_birth' => '1999-06-01',
-            'nrc' => '12/PABATA(N)123123',
+            'nrc' => '12/PABATA(N)5675678',
             'gender' => 'male',
             'nationality' => 'myanmar',
             'marital_status' => 'single',
-            'user_type' => 'user',
+            'user_type' => 'admin',
             'is_operation' => 1,
             'degree' => 'degree',
             'phone_1' => '09123123123',

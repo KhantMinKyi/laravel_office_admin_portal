@@ -32,7 +32,8 @@
     </ul>
 </div>
 <div id="default-tab-content">
-    <form>
+    <form method="post" action="{{ url('/admin/operation_user_list/store-operation_user') }}">
+        @csrf
         {{-- Profile --}}
         <div class="hidden p-4 rounded-lg bg-gray-50 dark:bg-mainbody-800" id="profile" role="tabpanel"
             aria-labelledby="profile-tab">
@@ -40,38 +41,36 @@
                 <div>
                     <label for="first_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">First
                         name</label>
-                    <input type="text" id="first_name"
+                    <input type="text" id="first_name" name="first_name"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-mainbody-300 focus:border-mainbody-300 block w-full p-2.5 dark:bg-mainbody-700 dark:border-mainbody-800 dark:placeholder-mainbody-300 dark:text-white dark:focus:ring-mainbody-600 dark:focus:border-mainbody-600"
                         placeholder="Enter First Name" required>
-                    @if (session()->has('error'))
-                        <span class="text-sm text-red-600 dark:text-red-500">{{ session('error') }}</span>
-                    @endif
                 </div>
                 <div>
                     <label for="last_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Last
                         name</label>
-                    <input type="text" id="last_name"
+                    <input type="text" id="last_name" name="last_name"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-mainbody-300 focus:border-mainbody-300 block w-full p-2.5 dark:bg-mainbody-700 dark:border-mainbody-800 dark:placeholder-mainbody-300 dark:text-white dark:focus:ring-mainbody-600 dark:focus:border-mainbody-600"
                         placeholder="Enter Last Name" required>
                 </div>
                 <div>
-                    <label for="dob" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Date of
+                    <label for="date_of_birth" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Date
+                        of
                         Birth</label>
-                    <input type="date" id="dob"
+                    <input type="date" id="date_of_birth" name="date_of_birth"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-mainbody-300 focus:border-mainbody-300 block w-full p-2.5 dark:bg-mainbody-700 dark:border-mainbody-800 dark:placeholder-mainbody-300 dark:text-white dark:focus:ring-mainbody-600 dark:focus:border-mainbody-600"
                         placeholder="Date of Birth" required>
                 </div>
                 <div>
                     <label for="nrc"
                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">NRC</label>
-                    <input type="text" id="nrc"
+                    <input type="text" id="nrc" name="nrc"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-mainbody-300 focus:border-mainbody-300 block w-full p-2.5 dark:bg-mainbody-700 dark:border-mainbody-800 dark:placeholder-mainbody-300 dark:text-white dark:focus:ring-mainbody-600 dark:focus:border-mainbody-600"
                         placeholder="Enter NRC" required>
                 </div>
                 <div>
                     <label for="gender"
                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Gender</label>
-                    <select id="gender"
+                    <select id="gender" name="gender"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-mainbody-300 focus:border-mainbody-300 block w-full p-2.5 dark:bg-mainbody-700 dark:border-mainbody-600 dark:placeholder-mainbody-300 dark:text-white dark:focus:ring-mainbody-800 dark:focus:border-mainbody-800">
                         <option selected disabled>Select Gender</option>
                         <option value="male">Male</option>
@@ -81,21 +80,22 @@
                 <div>
                     <label for="nationality"
                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nationality</label>
-                    <input type="text" id="nationality"
+                    <input type="text" id="nationality" name="nationality"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-mainbody-300 focus:border-mainbody-300 block w-full p-2.5 dark:bg-mainbody-700 dark:border-mainbody-800 dark:placeholder-mainbody-300 dark:text-white dark:focus:ring-mainbody-600 dark:focus:border-mainbody-600"
                         placeholder="Enter Nationality" required>
                 </div>
                 <div>
                     <label for="degree"
                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Degree</label>
-                    <input type="text" id="degree"
+                    <input type="text" id="degree" name="degree"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-mainbody-300 focus:border-mainbody-300 block w-full p-2.5 dark:bg-mainbody-700 dark:border-mainbody-800 dark:placeholder-mainbody-300 dark:text-white dark:focus:ring-mainbody-600 dark:focus:border-mainbody-600"
                         placeholder="Enter Degree" required>
                 </div>
                 <div>
-                    <label for="gender" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Maritial
+                    <label for="marital_status"
+                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Maritial
                         Status</label>
-                    <select id="gender"
+                    <select id="marital_status" name='marital_status'
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-mainbody-300 focus:border-mainbody-300 block w-full p-2.5 dark:bg-mainbody-700 dark:border-mainbody-600 dark:placeholder-mainbody-300 dark:text-white dark:focus:ring-mainbody-800 dark:focus:border-mainbody-800">
                         <option selected disabled>Select Status</option>
                         <option value="single" class="p-4">Single</option>
@@ -113,49 +113,51 @@
                 <div>
                     <label for="phone_1" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Phone
                         1</label>
-                    <input type="text" id="phone_1"
+                    <input type="text" id="phone_1" name="phone_1"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-mainbody-300 focus:border-mainbody-300 block w-full p-2.5 dark:bg-mainbody-700 dark:border-mainbody-800 dark:placeholder-mainbody-300 dark:text-white dark:focus:ring-mainbody-600 dark:focus:border-mainbody-600"
                         placeholder="Enter Phone 1" required>
                 </div>
                 <div>
                     <label for="phone_2" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Phone
                         2</label>
-                    <input type="text" id="phone_2"
+                    <input type="text" id="phone_2" name="phone_2"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-mainbody-300 focus:border-mainbody-300 block w-full p-2.5 dark:bg-mainbody-700 dark:border-mainbody-800 dark:placeholder-mainbody-300 dark:text-white dark:focus:ring-mainbody-600 dark:focus:border-mainbody-600"
                         placeholder="Enter Phone 2" required>
                 </div>
                 <div>
                     <label for="email"
                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email</label>
-                    <input type="email" id="email"
+                    <input type="email" id="email" name="email"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-mainbody-300 focus:border-mainbody-300 block w-full p-2.5 dark:bg-mainbody-700 dark:border-mainbody-800 dark:placeholder-mainbody-300 dark:text-white dark:focus:ring-mainbody-600 dark:focus:border-mainbody-600"
                         placeholder="Enter Email" required>
                 </div>
                 <div>
                     <label for="address"
                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Address</label>
-                    <input type="text" id="address"
+                    <input type="text" id="address" name="address"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-mainbody-300 focus:border-mainbody-300 block w-full p-2.5 dark:bg-mainbody-700 dark:border-mainbody-800 dark:placeholder-mainbody-300 dark:text-white dark:focus:ring-mainbody-600 dark:focus:border-mainbody-600"
                         placeholder="Enter Address" required>
                 </div>
                 <div>
-                    <label for="city"
+                    <label for="city_id"
                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">City</label>
-                    <select id="city"
+                    <select id="city_id" name="city_id"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-mainbody-300 focus:border-mainbody-300 block w-full p-2.5 dark:bg-mainbody-700 dark:border-mainbody-600 dark:placeholder-mainbody-300 dark:text-white dark:focus:ring-mainbody-800 dark:focus:border-mainbody-800">
                         <option selected disabled>Select City</option>
-                        <option value="Yangon">Yangon</option>
-                        <option value="Mandalay">Mandalay</option>
+                        @foreach ($cities as $city)
+                            <option value="{{ $city->id }}">{{ $city->name }}</option>
+                        @endforeach
                     </select>
                 </div>
                 <div>
-                    <label for="township"
+                    <label for="township_id"
                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Township</label>
-                    <select id="township"
+                    <select id="township_id" name="township_id"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-mainbody-300 focus:border-mainbody-300 block w-full p-2.5 dark:bg-mainbody-700 dark:border-mainbody-600 dark:placeholder-mainbody-300 dark:text-white dark:focus:ring-mainbody-800 dark:focus:border-mainbody-800">
                         <option selected disabled>Select Township</option>
-                        <option value="Tharkayta">Tharkayta</option>
-                        <option value="thanlyin">Thanlyin</option>
+                        @foreach ($townships as $township)
+                            <option value="{{ $township->id }}">{{ $township->name }}</option>
+                        @endforeach
                     </select>
                 </div>
             </div>
@@ -166,15 +168,16 @@
             <div class="grid gap-6 mb-6 md:grid-cols-2">
                 <div>
                     <label for="father_name"
-                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Father name</label>
-                    <input type="text" id="father_name"
+                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Father
+                        name</label>
+                    <input type="text" id="father_name" name="father_name"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-mainbody-300 focus:border-mainbody-300 block w-full p-2.5 dark:bg-mainbody-700 dark:border-mainbody-800 dark:placeholder-mainbody-300 dark:text-white dark:focus:ring-mainbody-600 dark:focus:border-mainbody-600"
                         placeholder="Enter Father Name" required>
                 </div>
                 <div>
                     <label for="contact_phone"
                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Contact Phone</label>
-                    <input type="text" id="contact_phone"
+                    <input type="text" id="contact_phone" name="contact_phone"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-mainbody-300 focus:border-mainbody-300 block w-full p-2.5 dark:bg-mainbody-700 dark:border-mainbody-800 dark:placeholder-mainbody-300 dark:text-white dark:focus:ring-mainbody-600 dark:focus:border-mainbody-600"
                         placeholder="Enter Contact Phone" required>
                 </div>
@@ -187,39 +190,38 @@
                 <div>
                     <label for="start_date" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Start
                         Date</label>
-                    <input type="date" id="start_date"
+                    <input type="date" id="start_date" name="start_date"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-mainbody-300 focus:border-mainbody-300 block w-full p-2.5 dark:bg-mainbody-700 dark:border-mainbody-800 dark:placeholder-mainbody-300 dark:text-white dark:focus:ring-mainbody-600 dark:focus:border-mainbody-600"
                         placeholder="Enter Start Date" required>
                 </div>
                 <div>
-                    <label for="position_id"
+                    <label for="position"
                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Position</label>
-                    <select id="position_id"
-                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-mainbody-300 focus:border-mainbody-300 block w-full p-2.5 dark:bg-mainbody-700 dark:border-mainbody-600 dark:placeholder-mainbody-300 dark:text-white dark:focus:ring-mainbody-800 dark:focus:border-mainbody-800">
-                        <option selected disabled>Select Position</option>
-                        <option value="1">Admin</option>
-                        <option value="2">Operation Staff</option>
-                    </select>
+                    <input type="text" id="position" name="position"
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-mainbody-300 focus:border-mainbody-300 block w-full p-2.5 dark:bg-mainbody-700 dark:border-mainbody-800 dark:placeholder-mainbody-300 dark:text-white dark:focus:ring-mainbody-600 dark:focus:border-mainbody-600"
+                        placeholder="Enter Start Date" required>
                 </div>
             </div>
             <div>
                 <label for="department_id"
                     class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Department</label>
-                <select id="department_id"
+                <select id="department_id" name="department_id"
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-mainbody-300 focus:border-mainbody-300 block w-full p-2.5 dark:bg-mainbody-700 dark:border-mainbody-600 dark:placeholder-mainbody-300 dark:text-white dark:focus:ring-mainbody-800 dark:focus:border-mainbody-800">
                     <option selected disabled>Select Department</option>
-                    <option value="1">Yangon</option>
-                    <option value="2">Mandalay</option>
+                    @foreach ($departments as $department)
+                        <option value="{{ $department->id }}">{{ $department->name }}</option>
+                    @endforeach
                 </select>
             </div>
             <div>
                 <label for="branch_id"
                     class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Branch</label>
-                <select id="branch_id"
+                <select id="branch_id" name="branch_id"
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-mainbody-300 focus:border-mainbody-300 block w-full p-2.5 dark:bg-mainbody-700 dark:border-mainbody-600 dark:placeholder-mainbody-300 dark:text-white dark:focus:ring-mainbody-800 dark:focus:border-mainbody-800">
                     <option selected disabled>Select Branch</option>
-                    <option value="1">Hlaing</option>
-                    <option value="2">TharKayTa</option>
+                    @foreach ($branches as $branch)
+                        <option value="{{ $branch->id }}">{{ $branch->name }}</option>
+                    @endforeach
                 </select>
             </div>
         </div>
@@ -230,14 +232,17 @@
                 <div>
                     <label for="username" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">User
                         Name</label>
-                    <input type="text" id="username"
+                    <input type="text" id="username" name="username"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-mainbody-300 focus:border-mainbody-300 block w-full p-2.5 dark:bg-mainbody-700 dark:border-mainbody-800 dark:placeholder-mainbody-300 dark:text-white dark:focus:ring-mainbody-600 dark:focus:border-mainbody-600"
                         placeholder="Enter Username" required>
+                    @error('username')
+                        <span class="text-sm text-red-600 dark:text-red-500">{{ $message }}</span>
+                    @enderror
                 </div>
                 <div>
                     <label for="password"
                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password</label>
-                    <input type="text" id="password"
+                    <input type="password" id="password" name="password"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-mainbody-300 focus:border-mainbody-300 block w-full p-2.5 dark:bg-mainbody-700 dark:border-mainbody-800 dark:placeholder-mainbody-300 dark:text-white dark:focus:ring-mainbody-600 dark:focus:border-mainbody-600"
                         placeholder="Enter Password" required>
                 </div>
@@ -246,14 +251,15 @@
                 <input onclick="toddleEncryptModel()" checked id="checked-checkbox" type="checkbox" value=""
                     class="w-4 h-4 text-mainbody-600 bg-gray-100 border-gray-300 rounded focus:ring-mainbody-500 dark:focus:ring-mainbody-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                 <label for="checked-checkbox" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Will
-                    You Encrypt?</label>
+                    You
+                    Encrypt?</label>
             </div>
             <div class="encrypt-model " id="encrypt-model">
                 <div class="grid gap-6 mt-6 md:grid-cols-2">
                     <div>
                         <label for="encryption_key"
                             class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Encryption Key</label>
-                        <select id="encryption_key"
+                        <select id="encryption_key" name="encryption_key"
                             class=" bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-mainbody-300 focus:border-mainbody-300 block w-full p-2.5 dark:bg-mainbody-700 dark:border-mainbody-600 dark:placeholder-mainbody-300 dark:text-white dark:focus:ring-mainbody-800 dark:focus:border-mainbody-800">
                             <option selected disabled>Select Encryption Key</option>
                             <option value="OJHSFHD837574@#$OJHFDSHF@#&$JC">Secure Code 1</option>
@@ -263,13 +269,14 @@
                     <div>
                         <label for="encrypt_count"
                             class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Count</label>
-                        <input type="number" id="encrypt_count"
+                        <input type="number" id="encrypt_count" name="encrypt_count"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-mainbody-300 focus:border-mainbody-300 block w-full p-2.5 dark:bg-mainbody-700 dark:border-mainbody-800 dark:placeholder-mainbody-300 dark:text-white dark:focus:ring-mainbody-600 dark:focus:border-mainbody-600"
                             placeholder="Max 100" required>
                     </div>
                 </div>
                 {{-- <div>
-                    <button type="submit" class="content-end mt-2 text-white bg-mainbody-300 hover:bg-mainbody-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-mainbody-600 dark:hover:bg-mainbody-700 dark:focus:ring-mainbody-800">Generate</button>
+                    <button type="submit"
+                        class="content-end mt-2 text-white bg-mainbody-300 hover:bg-mainbody-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-mainbody-600 dark:hover:bg-mainbody-700 dark:focus:ring-mainbody-800">Generate</button>
                 </div> --}}
             </div>
             <button type="submit"

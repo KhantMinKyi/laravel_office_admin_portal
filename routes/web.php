@@ -24,12 +24,12 @@ Route::prefix('admin')->middleware(['is_admin'])->group(function () {
         return view('admins.admin_index');
     });
     include __DIR__ . '/route_groups/users/admin_user.php';
-    Route::get('/normal_user_list', function () {
-        return view('admins.users.normal_user_list');
-    });
-    Route::get('/operation_user_list', function () {
-        return view('admins.users.operation_user_list');
-    });
+    // Route::get('/normal_user_list', function () {
+    //     return view('admins.users.normal_user_list');
+    // });
+    // Route::get('/operation_user_list', function () {
+    //     return view('admins.users.operation_user_list');
+    // });
     Route::get('/user_list', function () {
         return view('admins.users.index');
     });

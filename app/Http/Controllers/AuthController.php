@@ -21,10 +21,11 @@ class AuthController extends Controller
         if (!Hash::check($request->password, $user->password)) {
             return redirect()->back()->with('error', 'Password is Wrong , Try Again');
         }
-        auth()->login($user);
         if ($user->user_type == 'admin') {
+            auth()->login($user);
             return redirect('/admin');
         } else if ($user->user_type == 'user') {
+            auth()->login($user);
             return redirect('/user');
         } else {
             return 'Error';
