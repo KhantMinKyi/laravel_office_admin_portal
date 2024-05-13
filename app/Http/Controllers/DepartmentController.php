@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Branch;
+use App\Models\City;
+use App\Models\Department;
+use App\Models\Township;
 use Illuminate\Http\Request;
 
 class DepartmentController extends Controller
@@ -27,7 +31,14 @@ class DepartmentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'city_id' => 'required|numeric',
+            'township_id' => 'required|numeric',
+            'branch_id' => 'required|numeric',
+            'name' => 'required|string',
+        ]);
+        Department::create($validated);
+        return redirect()->route('location.index');
     }
 
     /**
@@ -43,7 +54,19 @@ class DepartmentController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $department = Department::find($id);
+        if (!$department) {
+            return redirect()->back();
+        }
+        $cities = City::all();
+        $townships = Township::all();
+        $branches = Branch::all();
+        return view('admins.partial_view.location_management.department.edit_department', compact([
+            'department',
+            'cities',
+            'townships',
+            'branches',
+        ]));
     }
 
     /**
@@ -51,7 +74,18 @@ class DepartmentController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $department = Department::find($id);
+        if (!$department) {
+            return redirect()->back();
+        }
+        $validated = $request->validate([
+            'city_id' => 'required|numeric',
+            'township_id' => 'required|numeric',
+            'branch_id' => 'required|numeric',
+            'name' => 'required|string',
+        ]);
+        $department->update($validated);
+        return redirect()->route('location.index');
     }
 
     /**

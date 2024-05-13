@@ -58,11 +58,16 @@ function togglePopupDepartmentViewModel(a) {
     popupDepartmentViewModel.classList.toggle("hidden");
 }
 // View Edit Department
-function togglePopupDepartmentEditModel() {
+function togglePopupDepartmentEditModel(id) {
     var popupDepartmentEditModel = document.getElementById(
         "popup-department-edit-model"
     );
     popupDepartmentEditModel.classList.toggle("hidden");
+    if (!popupDepartmentEditModel.classList.contains("hidden")) {
+        $("#popup-department-edit-model").load(
+            "/admin/department/" + id + "/edit"
+        );
+    }
 }
 // View Add Form For Branch
 function togglePopupBranchAddModel() {
