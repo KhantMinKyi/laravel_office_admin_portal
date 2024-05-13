@@ -54,7 +54,7 @@
                             class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                             {{ $city_key + 1 }}</th>
                         <td class="px-4 py-3">{{ $city->name }}</td>
-                        <td class="px-4 py-3">132</td>
+                        <td class="px-4 py-3">{{ $city->users->count() }}</td>
                         <td class="px-4 py-3 flex items-center justify-end">
                             {{-- view button --}}
                             <button onclick="togglePopupCityViewModel({{ $city_key }})">

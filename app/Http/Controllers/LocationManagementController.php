@@ -15,13 +15,13 @@ class LocationManagementController extends Controller
      */
     public function index()
     {
-        $cities = City::with('townships')->get();
+        $cities = City::with(['townships', 'users'])->get();
         $cities_count = City::all()->count();
-        $townships = Township::with('city')->get();
+        $townships = Township::with(['city', 'users'])->get();
         $townships_count = Township::all()->count();
-        $branches = Branch::with('city', 'township')->get();
+        $branches = Branch::with(['city', 'township', 'users'])->get();
         $branches_count = Branch::all()->count();
-        $departments = Department::with('city', 'township', 'branch')->get();
+        $departments = Department::with(['city', 'township', 'branch', 'users'])->get();
         $departments_count = Department::all()->count();
 
         return view('admins.location_management.location_management_index', [

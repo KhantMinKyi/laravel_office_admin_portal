@@ -24,7 +24,7 @@ class StoreUpdateAdminUserRequest extends FormRequest
     {
         return [
             'username' => ['required', 'string', Rule::unique('users', 'username')->ignore($this->id, 'id')],
-            'password' => 'required|min:6|max:40',
+            'password' => 'required|min:5|max:40',
             'first_name' => 'required|string',
             'last_name' => 'required|string',
             // 'full_name' =>'required|string',
@@ -35,7 +35,7 @@ class StoreUpdateAdminUserRequest extends FormRequest
             'marital_status' => ['required', Rule::in(config('enums.marital_status'))],
             'degree' => 'nullable|string',
             'phone_1' => 'required|string',
-            'phone_2' => 'required|string',
+            'phone_2' => 'nullable|string',
             'email' => ['required', 'email', Rule::unique('users', 'email')->ignore($this->id, 'id')],
             // 'email_verified_at' =>'required',
             'address' => 'required|string',

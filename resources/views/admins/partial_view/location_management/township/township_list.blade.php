@@ -56,7 +56,7 @@
                             {{ $township_key + 1 }}</th>
                         <td class="px-4 py-3">{{ $township->name }}</td>
                         <td class="px-4 py-3">{{ $township->city->name }}</td>
-                        <td class="px-4 py-3">132</td>
+                        <td class="px-4 py-3">{{ $township->users->count() }}</td>
                         <td class="px-4 py-3 flex items-center justify-end">
                             {{-- view button --}}
                             <button onclick="togglePopupTownshipViewModel({{ $township_key }})">

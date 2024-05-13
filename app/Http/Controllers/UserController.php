@@ -82,14 +82,33 @@ class UserController extends Controller
         ]);
     }
 
-    public function storeAdminUser(StoreUpdateAdminUserRequest $request)
+    public function storeUser(StoreUpdateAdminUserRequest $request)
     {
+        $url = $request->getRequestUri();
+        return $url;
         $validated = $request->validated();
         $validated['full_name'] = $validated['first_name'] . ' ' . $validated['last_name'];
-        $validated['user_type'] = 'admin';
-        $validated['is_operation'] = '0';
-        User::create($validated);
-        return redirect('/admin/admin_user_list')->with('success', 'User Created Successfully!');
+        // admin
+        if ($url == '/admin/admin_user_list/store-admin_user') {
+            $validated['user_type'] = 'admin';
+            $validated['is_operation'] = '0';
+            User::create($validated);
+            return redirect('/admin/admin_user_list')->with('success', 'User Created Successfully!');
+        }
+        // operation
+        else if ($url == '/admin/operation_user_list/store-operation_user') {
+            $validated['user_type'] = 'user';
+            $validated['is_operation'] = '1';
+            User::create($validated);
+            return redirect('/admin/operation_user_list')->with('success', 'User Created Successfully!');
+        }
+        // normal
+        else if ($url == '/admin/normal_user_list/store-normal_user') {
+            $validated['user_type'] = 'user';
+            $validated['is_operation'] = '0';
+            User::create($validated);
+            return redirect('/admin/normal_user_list')->with('success', 'User Created Successfully!');
+        }
     }
     public function storeOperationUser(StoreUpdateAdminUserRequest $request)
     {

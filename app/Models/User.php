@@ -28,6 +28,8 @@ class User extends Authenticatable
         'gender',
         'nationality',
         'marital_status',
+        'user_type',
+        'is_operation',
         'degree',
         'phone_1',
         'phone_2',
@@ -78,5 +80,9 @@ class User extends Authenticatable
     public function department()
     {
         return $this->belongsTo(Department::class);
+    }
+    public function salaries()
+    {
+        return $this->hasMany(Salary::class);
     }
 }

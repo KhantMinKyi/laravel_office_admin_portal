@@ -50,59 +50,57 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($branches as $branch_key =>$branch)
-
-
-
-                <tr
-                    class="border-b dark:border-gray-700 hover:text-white hover:bg-mainbody-300 dark:hover:bg-mainbody-700 hover:cursor-pointer">
-                    <th scope="row" class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                        {{$branch_key + 1}}</th>
-                    <td class="px-4 py-3">{{$branch->name}}</td>
-                    <td class="px-4 py-3">{{$branch->city->name}}</td>
-                    <td class="px-4 py-3">{{$branch->township->name}}</td>
-                    <td class="px-4 py-3">
-                        <Address>{{$branch->address}}</Address>
-                    </td>
-                    <td class="px-4 py-3">132</td>
-                    <td class="px-4 py-3 flex items-center justify-end">
-                        {{-- view button --}}
-                        <button onclick="togglePopupBranchViewModel({{$branch_key}})">
-                            <i
-                                class="fa-regular fa-eye text-mainbody-100 hover:text-white  dark:text-mainbody-400 mr-1"></i>
-                        </button>
-                        {{-- view dot --}}
-                        <button id="branch-imac-{{$branch_key}}-dropdown-button"
-                            data-dropdown-toggle="branch-imac-{{$branch_key}}-dropdown"
-                            class="inline-flex items-center p-0.5 text-sm font-medium text-center text-gray-500 hover:text-gray-800 rounded-lg focus:outline-none dark:text-gray-400 dark:hover:text-gray-100"
-                            type="button">
-                            <svg class="w-5 h-5" aria-hidden="true" fill="currentColor" viewbox="0 0 20 20"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z" />
-                            </svg>
-                        </button>
-                        <div id="branch-imac-{{$branch_key}}-dropdown"
-                            class="hidden z-10 w-44 bg-white rounded divide-y divide-gray-100 shadow dark:bg-mainbody-700 dark:divide-mainbody-600">
-                            <ul class="py-1 text-sm text-gray-700 dark:text-gray-200"
-                                aria-labelledby="branch-imac-27-dropdown-button">
-                                {{-- <li>
+                @foreach ($branches as $branch_key => $branch)
+                    <tr
+                        class="border-b dark:border-gray-700 hover:text-white hover:bg-mainbody-300 dark:hover:bg-mainbody-700 hover:cursor-pointer">
+                        <th scope="row"
+                            class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                            {{ $branch_key + 1 }}</th>
+                        <td class="px-4 py-3">{{ $branch->name }}</td>
+                        <td class="px-4 py-3">{{ $branch->city->name }}</td>
+                        <td class="px-4 py-3">{{ $branch->township->name }}</td>
+                        <td class="px-4 py-3">
+                            <Address>{{ $branch->address }}</Address>
+                        </td>
+                        <td class="px-4 py-3">{{ $branch->users->count() }}</td>
+                        <td class="px-4 py-3 flex items-center justify-end">
+                            {{-- view button --}}
+                            <button onclick="togglePopupBranchViewModel({{ $branch_key }})">
+                                <i
+                                    class="fa-regular fa-eye text-mainbody-100 hover:text-white  dark:text-mainbody-400 mr-1"></i>
+                            </button>
+                            {{-- view dot --}}
+                            <button id="branch-imac-{{ $branch_key }}-dropdown-button"
+                                data-dropdown-toggle="branch-imac-{{ $branch_key }}-dropdown"
+                                class="inline-flex items-center p-0.5 text-sm font-medium text-center text-gray-500 hover:text-gray-800 rounded-lg focus:outline-none dark:text-gray-400 dark:hover:text-gray-100"
+                                type="button">
+                                <svg class="w-5 h-5" aria-hidden="true" fill="currentColor" viewbox="0 0 20 20"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z" />
+                                </svg>
+                            </button>
+                            <div id="branch-imac-{{ $branch_key }}-dropdown"
+                                class="hidden z-10 w-44 bg-white rounded divide-y divide-gray-100 shadow dark:bg-mainbody-700 dark:divide-mainbody-600">
+                                <ul class="py-1 text-sm text-gray-700 dark:text-gray-200"
+                                    aria-labelledby="branch-imac-27-dropdown-button">
+                                    {{-- <li>
                                     <a href="#"
                                         class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-mainbody-600 dark:hover:text-white">Show</a>
                                 </li> --}}
-                                <li>
-                                    <button
-                                        class=" w-full text-left block py-2 px-4 hover:bg-gray-100 dark:hover:bg-mainbody-600 dark:hover:text-white"
-                                        onclick="togglePopupBranchEditModel()">Edit</button>
-                                </li>
-                            </ul>
-                            <div class="py-1">
-                                <a href="#"
-                                    class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-mainbody-600 dark:text-gray-200 dark:hover:text-white">Delete</a>
+                                    <li>
+                                        <button
+                                            class=" w-full text-left block py-2 px-4 hover:bg-gray-100 dark:hover:bg-mainbody-600 dark:hover:text-white"
+                                            onclick="togglePopupBranchEditModel()">Edit</button>
+                                    </li>
+                                </ul>
+                                <div class="py-1">
+                                    <a href="#"
+                                        class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-mainbody-600 dark:text-gray-200 dark:hover:text-white">Delete</a>
+                                </div>
                             </div>
-                        </div>
-                    </td>
-                </tr>
+                        </td>
+                    </tr>
                 @endforeach
             </tbody>
         </table>
