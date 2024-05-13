@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Salary;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -12,10 +13,25 @@ class SalaryController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $salaries = Salary::with('user')->get();
-        return view('admins.salary.salary_list', compact('salaries'));
+
+        $currentDate = Carbon::now();
+        $lastSixMonth = [];
+
+        for ($i = 0; $i <= 6; $i++) {
+            $lastSixMonth[] = $currentDate->copy()->subMonth($i)->format(('Y-m'));
+        }
+
+        $query = Salary::with('user');
+        if (isset($request->month)) {
+            $year = date('Y', strtotime($request->month));
+            $monthNumber = date('m', strtotime($request->month));
+            $query->whereYear('pay_date', $year)
+                ->whereMonth('pay_date', $monthNumber);
+        }
+        $salaries = $query->get();
+        return view('admins.salary.salary_list', compact('salaries', 'lastSixMonth'));
     }
 
     /**
