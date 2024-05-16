@@ -78,16 +78,22 @@ function togglePopupBranchAddModel() {
     popupBranchAddModel.classList.toggle("hidden");
 }
 // View User at Branch
-function togglePopupBranchViewModel(a) {
+function togglePopupBranchViewModel(id) {
     var popupBranchViewModel = document.getElementById(
         "popup-branch-view-model"
     );
     popupBranchViewModel.classList.toggle("hidden");
+    if (!popupBranchViewModel.classList.contains("hidden")) {
+        $("#popup-branch-view-model").load("/admin/branch/" + id);
+    }
 }
 // View Edit Branch
-function togglePopupBranchEditModel() {
+function togglePopupBranchEditModel(id) {
     var popupBranchEditModel = document.getElementById(
         "popup-branch-edit-model"
     );
     popupBranchEditModel.classList.toggle("hidden");
+    if (!popupBranchEditModel.classList.contains("hidden")) {
+        $("#popup-branch-edit-model").load("/admin/branch/" + id + "/edit");
+    }
 }

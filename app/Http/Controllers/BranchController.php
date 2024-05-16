@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Branch;
+use App\Models\City;
+use App\Models\Township;
 use Illuminate\Http\Request;
 
 class BranchController extends Controller
@@ -27,7 +30,13 @@ class BranchController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'city_id' => 'required|numeric',
+            'township_id' => 'required|numeric',
+            'name' => 'required|string',
+        ]);
+        Branch::create($validated);
+        return redirect()->route('location.index');
     }
 
     /**
@@ -35,7 +44,8 @@ class BranchController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $branch = Branch::with('users')->find($id);
+        return view('admins.partial_view.location_management.branch.view_branch_user', compact('branch'));
     }
 
     /**
@@ -43,7 +53,17 @@ class BranchController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $branch = Branch::find($id);
+        if (!$branch) {
+            return redirect()->back();
+        }
+        $cities = City::all();
+        $townships = Township::all();
+        return view('admins.partial_view.location_management.branch.edit_branch', compact([
+            'cities',
+            'townships',
+            'branch',
+        ]));
     }
 
     /**
@@ -51,7 +71,17 @@ class BranchController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $branch = Branch::find($id);
+        if (!$branch) {
+            return redirect()->back();
+        }
+        $validated = $request->validate([
+            'city_id' => 'required|numeric',
+            'township_id' => 'required|numeric',
+            'name' => 'required|string',
+        ]);
+        $branch->update($validated);
+        return redirect()->route('location.index');
     }
 
     /**
