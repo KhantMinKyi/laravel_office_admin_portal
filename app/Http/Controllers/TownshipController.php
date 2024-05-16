@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\City;
+use App\Models\Township;
 use Illuminate\Http\Request;
 
 class TownshipController extends Controller
@@ -27,7 +29,12 @@ class TownshipController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'city_id' => 'required|numeric',
+            'name' => 'required|string',
+        ]);
+        Township::create($validated);
+        return redirect()->route('location.index');
     }
 
     /**
@@ -35,7 +42,8 @@ class TownshipController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $township = Township::with('users')->find($id);
+        return view('admins.partial_view.location_management.township.view_township_user', compact('township'));
     }
 
     /**
@@ -43,7 +51,15 @@ class TownshipController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $township = Township::find($id);
+        if (!$township) {
+            return redirect()->back();
+        }
+        $cities = City::all();
+        return view('admins.partial_view.location_management.township.edit_township', compact([
+            'cities',
+            'township',
+        ]));
     }
 
     /**
@@ -51,7 +67,16 @@ class TownshipController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $township = Township::find($id);
+        if (!$township) {
+            return redirect()->back();
+        }
+        $validated = $request->validate([
+            'city_id' => 'required|numeric',
+            'name' => 'required|string',
+        ]);
+        $township->update($validated);
+        return redirect()->route('location.index');
     }
 
     /**

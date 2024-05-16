@@ -30,18 +30,24 @@ function togglePopupTownshipAddModel() {
     popupTownshipAddModel.classList.toggle("hidden");
 }
 // View User at Township
-function togglePopupTownshipViewModel(a) {
+function togglePopupTownshipViewModel(id) {
     var popupTownshipViewModel = document.getElementById(
         "popup-township-view-model"
     );
     popupTownshipViewModel.classList.toggle("hidden");
+    if (!popupTownshipViewModel.classList.contains("hidden")) {
+        $("#popup-township-view-model").load("/admin/township/" + id);
+    }
 }
 // View Edit Township
-function togglePopupTownshipEditModel() {
+function togglePopupTownshipEditModel(id) {
     var popupTownshipEditModel = document.getElementById(
         "popup-township-edit-model"
     );
     popupTownshipEditModel.classList.toggle("hidden");
+    if (!popupTownshipEditModel.classList.contains("hidden")) {
+        $("#popup-township-edit-model").load("/admin/township/" + id + "/edit");
+    }
 }
 // View Add Form For Department
 function togglePopupDepartmentAddModel() {
