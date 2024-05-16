@@ -46,7 +46,8 @@ class DepartmentController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $department = Department::with('users')->find($id);
+        return view('admins.partial_view.location_management.department.view_department_user', compact('department'));
     }
 
     /**

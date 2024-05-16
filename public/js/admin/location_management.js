@@ -51,11 +51,14 @@ function togglePopupDepartmentAddModel() {
     popupDepartmentAddModel.classList.toggle("hidden");
 }
 // View User at Department
-function togglePopupDepartmentViewModel(a) {
+function togglePopupDepartmentViewModel(id) {
     var popupDepartmentViewModel = document.getElementById(
         "popup-department-view-model"
     );
     popupDepartmentViewModel.classList.toggle("hidden");
+    if (!popupDepartmentViewModel.classList.contains("hidden")) {
+        $("#popup-department-view-model").load("/admin/department/" + id);
+    }
 }
 // View Edit Department
 function togglePopupDepartmentEditModel(id) {

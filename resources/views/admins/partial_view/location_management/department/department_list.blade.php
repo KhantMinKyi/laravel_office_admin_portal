@@ -63,13 +63,13 @@
                         <td class="px-4 py-3">{{ $department->users->count() }}</td>
                         <td class="px-4 py-3 flex items-center justify-end">
                             {{-- view button --}}
-                            <button onclick="togglePopupDepartmentViewModel({{ $depaetment_key }})">
+                            <button onclick="togglePopupDepartmentViewModel({{ $department->id }})">
                                 <i
                                     class="fa-regular fa-eye text-mainbody-100 hover:text-white  dark:text-mainbody-400 mr-1"></i>
                             </button>
                             {{-- view dot --}}
-                            <button id="department-imac-{{ $depaetment_key }}-dropdown-button"
-                                data-dropdown-toggle="department-imac-{{ $depaetment_key }}-dropdown"
+                            <button id="department-imac-{{ $department->id }}-dropdown-button"
+                                data-dropdown-toggle="department-imac-{{ $department->id }}-dropdown"
                                 class="inline-flex items-center p-0.5 text-sm font-medium text-center text-gray-500 hover:text-gray-800 rounded-lg focus:outline-none dark:text-gray-400 dark:hover:text-gray-100"
                                 type="button">
                                 <svg class="w-5 h-5" aria-hidden="true" fill="currentColor" viewbox="0 0 20 20"
