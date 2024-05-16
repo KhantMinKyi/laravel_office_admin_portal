@@ -14,13 +14,19 @@ function togglePopupCityAddModel() {
     popupCityAddModel.classList.toggle("hidden");
 }
 // View User at City
-function togglePopupCityViewModel(a) {
+function togglePopupCityViewModel(id) {
     var popupCityViewModel = document.getElementById("popup-city-view-model");
     popupCityViewModel.classList.toggle("hidden");
+    if (!popupCityViewModel.classList.contains("hidden")) {
+        $("#popup-city-view-model").load("/admin/city/" + id);
+    }
 }
-function togglePopupCityEditModel() {
+function togglePopupCityEditModel(id) {
     var popupCityEditModel = document.getElementById("popup-city-edit-model");
     popupCityEditModel.classList.toggle("hidden");
+    if (!popupCityEditModel.classList.contains("hidden")) {
+        $("#popup-city-edit-model").load("/admin/city/" + id + "/edit");
+    }
 }
 // View Add Form For Township
 function togglePopupTownshipAddModel() {
