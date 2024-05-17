@@ -4,6 +4,7 @@ use App\Http\Controllers\UserController;
 
 Route::get('/admin_user_list', [UserController::class, 'adminUserList']);
 Route::get('/admin_user_list/get-admin_user-detail', [UserController::class, 'viewAdminUserDetail']);
+Route::get('/admin_user_list/edit-admin_user-detail/{id}', [UserController::class, 'editAdminUserDetail']);
 Route::post('/admin_user_list/store-admin_user', [UserController::class, 'storeUser']);
 
 

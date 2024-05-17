@@ -81,7 +81,21 @@ class UserController extends Controller
             'normal_user' => $normal_user
         ]);
     }
-
+    public function editAdminUserDetail($id)
+    {
+        $cities = City::select('id', 'name')->get();
+        $townships = Township::select('id', 'name')->get();
+        $branches = Branch::select('id', 'name')->get();
+        $departments = Department::select('id', 'name')->get();
+        $admin_user = User::with('city', 'township', 'branch', 'department')->find($id);
+        return view('admins.partial_view.users.admin_user.edit_user', [
+            'admin_user' => $admin_user,
+            'cities' => $cities,
+            'townships' => $townships,
+            'branches' => $branches,
+            'departments' => $departments,
+        ]);
+    }
     public function storeUser(StoreUpdateAdminUserRequest $request)
     {
         $url = $request->getRequestUri();

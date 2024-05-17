@@ -47,8 +47,8 @@
                         </div>
                     </div>
                     <div class="flex items-center">
-                        <input disabled name="is_encrypted" @if ($salary->is_encrypted == 1) checked @endif
-                            id="checked-checkbox" type="checkbox" value="1"
+                        <input name="is_encrypted" @if ($salary->is_encrypted == 1) checked @endif id="checked-checkbox"
+                            type="checkbox" value="1"
                             class="w-4 h-4 text-mainbody-600 bg-gray-100 border-gray-300 rounded focus:ring-mainbody-500 dark:focus:ring-mainbody-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                         <label for="checked-checkbox" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">
                             Encrypted?</label>
