@@ -44,6 +44,7 @@ Route::prefix('user')->middleware(['is_user'])->group(function () {
     Route::get('/', function () {
         return view('users.user_index');
     });
+    Route::resource('user_salary', SalaryController::class);
     Route::get('/user_profile/{id}', [UserController::class, 'userProfile'])->name('users.user_profile');
     Route::get('/user_salary_list', [SalaryController::class, 'userSalaryList'])->name('users.user_salary_list');
     Route::get('/salary_detail/{id}', [SalaryController::class, 'salaryDetail'])->name('users.salary_detail');

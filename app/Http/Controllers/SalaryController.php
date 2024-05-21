@@ -31,6 +31,9 @@ class SalaryController extends Controller
                 ->whereMonth('pay_date', $monthNumber);
         }
         $salaries = $query->get();
+        if (Auth::user()->user_type == 'user') {
+            return view('users.salary.salary_list', compact('salaries', 'lastSixMonth', 'requestMonth'));
+        }
         return view('admins.salary.salary_list', compact('salaries', 'lastSixMonth', 'requestMonth'));
     }
 
@@ -43,6 +46,9 @@ class SalaryController extends Controller
 
         // Retrieve users excluding the authenticated user
         $users = User::where('id', '!=', $authenticatedUserId)->get();
+        if (Auth::user()->user_type == 'user') {
+            return view('users.salary.salary_create',  compact('users'));
+        }
         return view('admins.salary.salary_create', compact('users'));
     }
 
@@ -59,6 +65,9 @@ class SalaryController extends Controller
             'is_encrypted' => 'nullable|numeric',
         ]);
         Salary::create($validated);
+        if (Auth::user()->user_type == 'user') {
+            return redirect()->route('user_salary.index');
+        }
         return redirect()->route('salary.index');
     }
 
@@ -70,6 +79,9 @@ class SalaryController extends Controller
         $salary = Salary::find($id);
         if (!$salary) {
             return redirect()->back();
+        }
+        if (Auth::user()->user_type == 'user') {
+            return  view('users.salary.salary_detail', compact(['salary']));
         }
         return view('admins.salary.salary_detail', compact(['salary']));
     }
@@ -87,6 +99,9 @@ class SalaryController extends Controller
 
         // Retrieve users excluding the authenticated user
         $users = User::where('id', '!=', $authenticatedUserId)->get();
+        if (Auth::user()->user_type == 'user') {
+            return view('users.salary.salary_edit', compact(['salary', 'users']));
+        }
         return view('admins.salary.salary_edit', compact(['salary', 'users']));
     }
 
@@ -107,6 +122,9 @@ class SalaryController extends Controller
             'is_encrypted' => 'nullable|numeric',
         ]);
         $salary->update($validated);
+        if (Auth::user()->user_type == 'user') {
+            return redirect()->route('user_salary.index');
+        }
         return redirect()->route('salary.index');
     }
 
@@ -120,6 +138,9 @@ class SalaryController extends Controller
             return redirect()->back();
         }
         $salary->delete();
+        if (Auth::user()->user_type == 'user') {
+            return redirect()->route('user_salary.index');
+        }
         return redirect()->route('salary.index');
     }
     public function userSalaryList(Request $request)
