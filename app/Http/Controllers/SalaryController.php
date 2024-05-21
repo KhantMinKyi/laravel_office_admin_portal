@@ -18,7 +18,7 @@ class SalaryController extends Controller
 
         $currentDate = Carbon::now();
         $lastSixMonth = [];
-
+        $requestMonth = $request->month;
         for ($i = 0; $i <= 6; $i++) {
             $lastSixMonth[] = $currentDate->copy()->subMonth($i)->format(('Y-m'));
         }
@@ -31,7 +31,7 @@ class SalaryController extends Controller
                 ->whereMonth('pay_date', $monthNumber);
         }
         $salaries = $query->get();
-        return view('admins.salary.salary_list', compact('salaries', 'lastSixMonth'));
+        return view('admins.salary.salary_list', compact('salaries', 'lastSixMonth', 'requestMonth'));
     }
 
     /**
@@ -128,6 +128,7 @@ class SalaryController extends Controller
         $currentDate = Carbon::now();
         $lastSixMonth = [];
         $user_id = Auth::user()->id;
+        $requestMonth = $request->month;
 
         for ($i = 0; $i <= 6; $i++) {
             $lastSixMonth[] = $currentDate->copy()->subMonth($i)->format(('Y-m'));
@@ -141,7 +142,7 @@ class SalaryController extends Controller
                 ->whereMonth('pay_date', $monthNumber);
         }
         $salaries = $query->get();
-        return view('salary_list', compact('salaries', 'lastSixMonth'));
+        return view('salary_list', compact('salaries', 'lastSixMonth', 'requestMonth'));
     }
     public function salaryDetail(string $id)
     {

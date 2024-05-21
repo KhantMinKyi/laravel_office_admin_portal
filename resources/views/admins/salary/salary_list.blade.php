@@ -38,7 +38,8 @@
                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-mainbody-300 focus:border-mainbody-300 block w-full p-2.5 dark:bg-mainbody-700 dark:border-mainbody-600 dark:placeholder-mainbody-300 dark:text-white dark:focus:ring-mainbody-800 dark:focus:border-mainbody-800">
                                     <option selected value="">Select Month</option>
                                     @foreach ($lastSixMonth as $month)
-                                        <option value="{{ $month }}">{{ $month }}</option>
+                                        <option value="{{ $month }}"
+                                            @if ($month == $requestMonth) selected @endif>{{ $month }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -108,6 +109,9 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                @php
+                                    $total = 0;
+                                @endphp
                                 @foreach ($salaries as $key => $salary)
                                     <tr
                                         class="border-b dark:border-gray-700 hover:text-white hover:bg-mainbody-300 dark:hover:bg-mainbody-700 hover:cursor-pointer">
@@ -162,7 +166,17 @@
                                             </div>
                                         </td>
                                     </tr>
+                                    @php
+                                        $total += $salary->salary;
+                                    @endphp
                                 @endforeach
+                                <tr>
+                                    <td class="px-4 py-3"></td>
+                                    <td class="px-4 py-3 font-bold dark:text-white">Total</td>
+                                    <td class="px-4 py-3 font-bold dark:text-white">{{ $total }}</td>
+                                    <td class="px-4 py-3"></td>
+                                    <td class="px-4 py-3"></td>
+                                </tr>
                             </tbody>
                         </table>
                     </div>
