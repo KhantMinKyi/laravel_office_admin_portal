@@ -76,6 +76,9 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                @php
+                                    $total = 0;
+                                @endphp
                                 @foreach ($salaries as $key => $salary)
                                     <tr
                                         class="border-b dark:border-gray-700 hover:text-white hover:bg-mainbody-300 dark:hover:bg-mainbody-700 hover:cursor-pointer">
@@ -83,7 +86,7 @@
                                             class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                             {{ $salary->user->full_name }}</th>
                                         <td class="px-4 py-3">{{ $salary->user->username }}</td>
-                                        <td class="px-4 py-3">{{ $salary->salary }}</td>
+                                        <td class="px-4 py-3">{{ $salary->salary }} Kyats</td>
                                         <td class="px-4 py-3">{{ $salary->pay_date }}</td>
                                         <td class="px-4 py-3 flex items-center justify-end" data-id="{{ $salary->id }}">
                                             {{-- view button --}}
@@ -100,7 +103,17 @@
                                             @endif
                                         </td>
                                     </tr>
+                                    @php
+                                        $total += $salary->salary;
+                                    @endphp
                                 @endforeach
+                                <tr>
+                                    <td class="px-4 py-3"></td>
+                                    <td class="px-4 py-3 font-bold dark:text-white">Total</td>
+                                    <td class="px-4 py-3 font-bold dark:text-white">{{ $total }} Kyats</td>
+                                    <td class="px-4 py-3"></td>
+                                    <td class="px-4 py-3"></td>
+                                </tr>
                             </tbody>
                         </table>
                     </div>

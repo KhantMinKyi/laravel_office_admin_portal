@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AttendanceController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BranchController;
 use App\Http\Controllers\CityController;
@@ -35,6 +36,7 @@ Route::prefix('admin')->middleware(['is_admin'])->group(function () {
     Route::resource('branch', BranchController::class);
     Route::resource('department', DepartmentController::class);
     Route::resource('salary', SalaryController::class);
+    Route::resource('attendance', AttendanceController::class);
     Route::get('/location_management', [LocationManagementController::class, 'index'])->name('location.index');
     Route::get('/admin_profile/{id}', [UserController::class, 'userProfile'])->name('users.admin_profile');
     Route::get('/admin_salary_list', [SalaryController::class, 'userSalaryList'])->name('users.admin_salary_list');

@@ -165,13 +165,13 @@
                             <span class="flex-1 ms-3 whitespace-nowrap">Company Finance</span>
                         </a>
                     </li> --}}
-                    <li>
+                    {{-- <li>
                         <a href="/admin/location_management"
                             class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-mainbody-700 group">
                             <i class="fa-solid fa-location-dot text-lg text-gray-400"></i>
                             <span class="flex-1 ms-3 whitespace-nowrap">Location Management</span>
                         </a>
-                    </li>
+                    </li> --}}
                 @endif
                 <li>
                     <a href="/logout"
