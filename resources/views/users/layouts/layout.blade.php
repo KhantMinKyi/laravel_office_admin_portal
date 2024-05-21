@@ -67,20 +67,20 @@
                             id="dropdown-user">
                             <div class="px-4 py-3" role="none">
                                 <p class="text-sm text-gray-900 dark:text-white" role="none">
-                                    Neil Sims
+                                    {{ Auth::user()->full_name }}
                                 </p>
                                 <p class="text-sm font-medium text-gray-900 truncate dark:text-gray-300" role="none">
-                                    neil.sims@flowbite.com
+                                    {{ Auth::user()->email }}
                                 </p>
                             </div>
                             <ul class="py-1" role="none">
                                 <li>
-                                    <a href="#"
+                                    <a href="{{ route('users.user_profile', ['id' => Auth::user()->id]) }}"
                                         class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-mainbody-600 dark:hover:text-white"
-                                        role="menuitem">Dashboard</a>
+                                        role="menuitem">Profile</a>
                                 </li>
                                 <li>
-                                    <a href="#"
+                                    <a href="{{ route('users.user_salary_list') }}"
                                         class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-mainbody-600 dark:hover:text-white"
                                         role="menuitem">Earnings</a>
                                 </li>
@@ -115,52 +115,38 @@
                         <span class="ms-3">Main Dashboard</span>
                     </a>
                 </li>
-                <li class="pt-4">
-                    <button type="button"
-                        class="flex items-center w-full p-2 text-base text-mainbody-900 transition duration-75 rounded-lg group  hover:bg-gray-100 dark:text-white dark:hover:bg-mainbody-700"
-                        aria-controls="dropdown-example-users" data-collapse-toggle="dropdown-example-users">
-                        <i
-                            class="fa-solid fa-users-gear text-lg text-gray-400 hover:text-mainbody-300 dark:hover:text-mainbody-100 "></i>
-                        <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap">Users</span>
-                        <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                            viewBox="0 0 10 6">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                stroke-width="2" d="m1 1 4 4 4-4" />
-                        </svg>
-                    </button>
-                    <ul id="dropdown-example-users" class="hidden py-2 space-y-2">
-                        <li>
-
-                            <a href="/admin/admin_user_list"
-                                class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-mainbody-700">
-                                <i
-                                    class="fa-solid fa-user-tie text-lg text-gray-400 hover:text-mainbody-300 dark:hover:text-mainbody-100 pr-2"></i>
-                                Admins</a>
-                        </li>
-                        <li>
-                            <a href="/admin/operation_user_list"
-                                class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-mainbody-700">
-                                <i
-                                    class="fa-solid fa-user-gear text-lg text-gray-400 hover:text-mainbody-300 dark:hover:text-mainbody-100 pr-2"></i>
-                                Operation Staffs</a>
-                        </li>
-                        <li>
-                            <a href="/admin/normal_user_list"
-                                class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-mainbody-700">
-                                <i
-                                    class="fa-solid fa-user text-lg text-gray-400 hover:text-mainbody-300 dark:hover:text-mainbody-100 pr-2"></i>
-                                Normal Staffs</a>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="#"
-                        class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-mainbody-700 group">
-                        <i
-                            class="fa-solid fa-sack-dollar text-lg text-gray-400 hover:text-mainbody-300 dark:hover:text-mainbody-100 pr-2"></i>
-                        <span class="flex-1 ms-3 whitespace-nowrap">Company Finance</span>
-                    </a>
-                </li>
+                @if (Auth::user()->is_operation == 1)
+                    <li class="pt-4">
+                        <button type="button"
+                            class="flex items-center w-full p-2 text-base text-mainbody-900 transition duration-75 rounded-lg group  hover:bg-gray-100 dark:text-white dark:hover:bg-mainbody-700"
+                            aria-controls="dropdown-example-users" data-collapse-toggle="dropdown-example-users">
+                            <i
+                                class="fa-solid fa-users-gear text-lg text-gray-400 hover:text-mainbody-300 dark:hover:text-mainbody-100 "></i>
+                            <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap">Users</span>
+                            <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                viewBox="0 0 10 6">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-width="2" d="m1 1 4 4 4-4" />
+                            </svg>
+                        </button>
+                        <ul id="dropdown-example-users" class="hidden py-2 space-y-2">
+                            <li>
+                                <a href="/admin/operation_user_list"
+                                    class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-mainbody-700">
+                                    <i
+                                        class="fa-solid fa-user-gear text-lg text-gray-400 hover:text-mainbody-300 dark:hover:text-mainbody-100 pr-2"></i>
+                                    Operation Staffs</a>
+                            </li>
+                            <li>
+                                <a href="/admin/normal_user_list"
+                                    class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-mainbody-700">
+                                    <i
+                                        class="fa-solid fa-user text-lg text-gray-400 hover:text-mainbody-300 dark:hover:text-mainbody-100 pr-2"></i>
+                                    Normal Staffs</a>
+                            </li>
+                        </ul>
+                    </li>
+                @endif
                 <li>
                     <a href="#"
                         class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-mainbody-700 group">
@@ -170,13 +156,23 @@
 
                     </a>
                 </li>
-                <li>
-                    <a href="/admin/location_management"
-                        class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-mainbody-700 group">
-                        <i class="fa-solid fa-location-dot text-lg text-gray-400"></i>
-                        <span class="flex-1 ms-3 whitespace-nowrap">Location Management</span>
-                    </a>
-                </li>
+                @if (Auth::user()->is_operation == 1)
+                    {{-- <li>
+                        <a href="#"
+                            class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-mainbody-700 group">
+                            <i
+                                class="fa-solid fa-sack-dollar text-lg text-gray-400 hover:text-mainbody-300 dark:hover:text-mainbody-100 pr-2"></i>
+                            <span class="flex-1 ms-3 whitespace-nowrap">Company Finance</span>
+                        </a>
+                    </li> --}}
+                    <li>
+                        <a href="/admin/location_management"
+                            class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-mainbody-700 group">
+                            <i class="fa-solid fa-location-dot text-lg text-gray-400"></i>
+                            <span class="flex-1 ms-3 whitespace-nowrap">Location Management</span>
+                        </a>
+                    </li>
+                @endif
                 <li>
                     <a href="/logout"
                         class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-mainbody-700 group">

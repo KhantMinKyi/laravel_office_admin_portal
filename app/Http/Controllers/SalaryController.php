@@ -122,4 +122,34 @@ class SalaryController extends Controller
         $salary->delete();
         return redirect()->route('salary.index');
     }
+    public function userSalaryList(Request $request)
+    {
+
+        $currentDate = Carbon::now();
+        $lastSixMonth = [];
+        $user_id = Auth::user()->id;
+
+        for ($i = 0; $i <= 6; $i++) {
+            $lastSixMonth[] = $currentDate->copy()->subMonth($i)->format(('Y-m'));
+        }
+
+        $query = Salary::with('user')->where('user_id', $user_id);
+        if (isset($request->month)) {
+            $year = date('Y', strtotime($request->month));
+            $monthNumber = date('m', strtotime($request->month));
+            $query->whereYear('pay_date', $year)
+                ->whereMonth('pay_date', $monthNumber);
+        }
+        $salaries = $query->get();
+        return view('salary_list', compact('salaries', 'lastSixMonth'));
+    }
+    public function salaryDetail(string $id)
+    {
+        $salary = Salary::where('id', $id)->where('user_id', Auth::user()->id)->first();
+        if (!$salary) {
+            return redirect()->back();
+        }
+
+        return view('salary_detail', compact(['salary']));
+    }
 }

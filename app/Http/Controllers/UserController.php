@@ -99,7 +99,7 @@ class UserController extends Controller
     public function storeUser(StoreUpdateAdminUserRequest $request)
     {
         $url = $request->getRequestUri();
-        return $url;
+        // return $url;
         $validated = $request->validated();
         $validated['full_name'] = $validated['first_name'] . ' ' . $validated['last_name'];
         // admin
@@ -124,14 +124,21 @@ class UserController extends Controller
             return redirect('/admin/normal_user_list')->with('success', 'User Created Successfully!');
         }
     }
-    public function storeOperationUser(StoreUpdateAdminUserRequest $request)
+    // public function storeOperationUser(StoreUpdateAdminUserRequest $request)
+    // {
+    //     $validated = $request->validated();
+    //     $validated['full_name'] = $validated['first_name'] . ' ' . $validated['last_name'];
+    //     $validated['user_type'] = 'user';
+    //     $validated['is_operation'] = '1';
+    //     // return $validated;
+    //     User::create($validated);
+    //     return redirect('/admin/operation_user_list')->with('success', 'User Created Successfully!');
+    // }
+    public function userProfile($id)
     {
-        $validated = $request->validated();
-        $validated['full_name'] = $validated['first_name'] . ' ' . $validated['last_name'];
-        $validated['user_type'] = 'user';
-        $validated['is_operation'] = '1';
-        // return $validated;
-        User::create($validated);
-        return redirect('/admin/operation_user_list')->with('success', 'User Created Successfully!');
+        $admin_user = User::with('city', 'township', 'branch', 'department')->find($id);
+        return view('user_profile', [
+            'admin_user' => $admin_user
+        ]);
     }
 }
