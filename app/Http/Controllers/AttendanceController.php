@@ -52,6 +52,9 @@ class AttendanceController extends Controller
             'time' => $currentTime,
             'attendance_date' => $currentDate,
         ]);
+        if (Auth::user()->user_type == 'user') {
+            return redirect()->route('users.user_attendance');
+        }
         return redirect()->route('attendance.index');
     }
 
@@ -71,6 +74,9 @@ class AttendanceController extends Controller
         $attendance = Attendance::find($id);
         if (!$attendance) {
             return redirect()->back();
+        }
+        if (Auth::user()->user_type == 'user') {
+            return view('users.attendance.attendance_detail', compact(['attendance']));
         }
         return view('admins.attendance.attendance_detail', compact(['attendance']));
     }
@@ -97,5 +103,27 @@ class AttendanceController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+    public function userAttendance(Request $request)
+    {
+        $currentDate = Carbon::now();
+        $lastSixMonth = [];
+        $requestMonth = $request->month;
+        $user_id = Auth::user()->id;
+        for ($i = 0; $i <= 6; $i++) {
+            $lastSixMonth[] = $currentDate->copy()->subMonth($i)->format(('Y-m'));
+        }
+
+        $query = Attendance::with('user')->where('user_id', $user_id);
+        if (isset($request->month)) {
+            $year = date('Y', strtotime($request->month));
+            $monthNumber = date('m', strtotime($request->month));
+            $query->whereYear('attendance_date', $year)
+                ->whereMonth('attendance_date', $monthNumber);
+        }
+        $attendances = $query->get();
+        // return $attendances;
+        return view('users.attendance.attendance_list', compact(['attendances', 'lastSixMonth', 'requestMonth']));
     }
 }

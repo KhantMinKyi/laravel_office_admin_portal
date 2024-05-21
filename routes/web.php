@@ -47,9 +47,11 @@ Route::prefix('user')->middleware(['is_user'])->group(function () {
         return view('users.user_index');
     });
     Route::resource('user_salary', SalaryController::class);
+    Route::resource('user_attendance', AttendanceController::class);
     Route::get('/user_profile/{id}', [UserController::class, 'userProfile'])->name('users.user_profile');
     Route::get('/user_salary_list', [SalaryController::class, 'userSalaryList'])->name('users.user_salary_list');
     Route::get('/salary_detail/{id}', [SalaryController::class, 'salaryDetail'])->name('users.salary_detail');
+    Route::get('/user_attendance_index', [AttendanceController::class, 'userAttendance'])->name('users.user_attendance');
 });
 
 Route::post('/login', [AuthController::class, 'login']);
