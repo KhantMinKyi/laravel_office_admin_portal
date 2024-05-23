@@ -19,7 +19,7 @@ class UserController extends Controller
         $cities = City::select('id', 'name')->get();
         $townships = Township::select('id', 'name')->get();
         $branches = Branch::select('id', 'name')->get();
-        $departments = Department::select('id', 'name')->get();
+        $departments = Department::with('branch')->get();
         return view('admins.users.admin_user_list', [
             'admin_users' => $admin_users,
             'cities' => $cities,
@@ -35,7 +35,7 @@ class UserController extends Controller
         $cities = City::select('id', 'name')->get();
         $townships = Township::select('id', 'name')->get();
         $branches = Branch::select('id', 'name')->get();
-        $departments = Department::select('id', 'name')->get();
+        $departments = Department::with('branch')->get();
         return view('admins.users.operation_user_list', [
             'operation_users' => $operation_users,
             'cities' => $cities,
@@ -51,7 +51,7 @@ class UserController extends Controller
         $cities = City::select('id', 'name')->get();
         $townships = Township::select('id', 'name')->get();
         $branches = Branch::select('id', 'name')->get();
-        $departments = Department::select('id', 'name')->get();
+        $departments = Department::with('branch')->get();
         return view('admins.users.normal_user_list', [
             'normal_users' => $normal_users,
             'cities' => $cities,

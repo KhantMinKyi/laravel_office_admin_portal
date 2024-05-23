@@ -247,6 +247,7 @@
                                 @foreach ($departments as $department)
                                     <option value="{{ $department->id }}"
                                         @if ($department->id == $admin_user->department_id) selected @endif>{{ $department->name }}
+                                        ({{ $department->branch->name }})
                                     </option>
                                 @endforeach
                             </select>
