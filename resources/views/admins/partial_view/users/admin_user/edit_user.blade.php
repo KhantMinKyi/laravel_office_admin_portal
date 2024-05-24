@@ -48,7 +48,9 @@
                 </ul>
             </div>
             <div id="default-tab-content">
-                <form>
+                <form action="{{ route('users.admin_update', ['id' => $admin_user->id]) }}" method="POST">
+                    @csrf
+                    @method('PUT')
                     {{-- Profile --}}
                     <div class="p-4 rounded-lg bg-gray-50 dark:bg-mainbody-800" id="edit-profile" role="tabpanel"
                         aria-labelledby="edit-profile-tab">
@@ -118,7 +120,7 @@
                                 <label for="marital_status"
                                     class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Maritial
                                     Status</label>
-                                <select id="edit_marital_status"
+                                <select id="edit_marital_status" name="marital_status"
                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-mainbody-300 focus:border-mainbody-300 block w-full p-2.5 dark:bg-mainbody-700 dark:border-mainbody-600 dark:placeholder-mainbody-300 dark:text-white dark:focus:ring-mainbody-800 dark:focus:border-mainbody-800">
                                     <option selected disabled>Select Status</option>
                                     <option value="single" @if ($admin_user->marital_status == 'single') selected @endif>Single
@@ -181,9 +183,9 @@
                                 </select>
                             </div>
                             <div>
-                                <label for="township"
+                                <label for="township_id"
                                     class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Township</label>
-                                <select id="edit_select_township"
+                                <select id="edit_township_id" name="township_id"
                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-mainbody-300 focus:border-mainbody-300 block w-full p-2.5 dark:bg-mainbody-700 dark:border-mainbody-600 dark:placeholder-mainbody-300 dark:text-white dark:focus:ring-mainbody-800 dark:focus:border-mainbody-800">
                                     <option selected disabled>Select Township</option>
                                     @foreach ($townships as $township)

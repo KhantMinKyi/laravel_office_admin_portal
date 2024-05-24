@@ -39,6 +39,7 @@ Route::prefix('admin')->middleware(['is_admin'])->group(function () {
     Route::resource('attendance', AttendanceController::class);
     Route::get('/location_management', [LocationManagementController::class, 'index'])->name('location.index');
     Route::get('/admin_profile/{id}', [UserController::class, 'userProfile'])->name('users.admin_profile');
+    Route::put('/admin_update/{id}', [UserController::class, 'userUpdate'])->name('users.admin_update');
     Route::get('/admin_salary_list', [SalaryController::class, 'userSalaryList'])->name('users.admin_salary_list');
 });
 Route::prefix('user')->middleware(['is_user'])->group(function () {
@@ -49,6 +50,7 @@ Route::prefix('user')->middleware(['is_user'])->group(function () {
     Route::resource('user_salary', SalaryController::class);
     Route::resource('user_attendance', AttendanceController::class);
     Route::get('/user_profile/{id}', [UserController::class, 'userProfile'])->name('users.user_profile');
+    Route::put('/user_update/{id}', [UserController::class, 'userUpdate'])->name('users.user_update');
     Route::get('/user_salary_list', [SalaryController::class, 'userSalaryList'])->name('users.user_salary_list');
     Route::get('/salary_detail/{id}', [SalaryController::class, 'salaryDetail'])->name('users.salary_detail');
     Route::get('/user_attendance_index', [AttendanceController::class, 'userAttendance'])->name('users.user_attendance');

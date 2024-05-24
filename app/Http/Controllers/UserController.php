@@ -9,6 +9,7 @@ use App\Models\Department;
 use App\Models\Township;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class UserController extends Controller
 {
@@ -86,7 +87,7 @@ class UserController extends Controller
         $cities = City::select('id', 'name')->get();
         $townships = Township::select('id', 'name')->get();
         $branches = Branch::select('id', 'name')->get();
-        $departments = Department::select('id', 'name')->get();
+        $departments = Department::with('branch')->get();
         $admin_user = User::with('city', 'township', 'branch', 'department')->find($id);
         return view('admins.partial_view.users.admin_user.edit_user', [
             'admin_user' => $admin_user,
@@ -124,21 +125,40 @@ class UserController extends Controller
             return redirect('/admin/normal_user_list')->with('success', 'User Created Successfully!');
         }
     }
-    // public function storeOperationUser(StoreUpdateAdminUserRequest $request)
-    // {
-    //     $validated = $request->validated();
-    //     $validated['full_name'] = $validated['first_name'] . ' ' . $validated['last_name'];
-    //     $validated['user_type'] = 'user';
-    //     $validated['is_operation'] = '1';
-    //     // return $validated;
-    //     User::create($validated);
-    //     return redirect('/admin/operation_user_list')->with('success', 'User Created Successfully!');
-    // }
     public function userProfile($id)
     {
         $admin_user = User::with('city', 'township', 'branch', 'department')->find($id);
         return view('user_profile', [
             'admin_user' => $admin_user
         ]);
+    }
+    public function userUpdate(Request $request, $id)
+    {
+        $validated = $request->validate([
+            'username' => ['required', 'string', Rule::unique('users', 'username')->ignore($id, 'id')],
+            'first_name' => 'required|string',
+            'last_name' => 'required|string',
+            'date_of_birth' => 'required|date',
+            'nrc' => 'nullable',
+            'gender' => ['required', Rule::in(config('enums.gender'))],
+            'nationality' => 'nullable|string',
+            'marital_status' => ['required', Rule::in(config('enums.marital_status'))],
+            'degree' => 'nullable|string',
+            'phone_1' => 'required|string',
+            'phone_2' => 'nullable|string',
+            'email' => ['required', 'email', Rule::unique('users', 'email')->ignore($id, 'id')],
+            'address' => 'required|string',
+            'father_name' => 'required|string',
+            'contact_phone' => 'nullable|string',
+            'start_date' => 'required|date',
+            'position' => 'nullable|string',
+            'city_id' => 'required|exists:App\Models\City,id',
+            'township_id' => 'required|exists:App\Models\Township,id',
+            'branch_id' => 'required|exists:App\Models\Branch,id',
+            'department_id' => 'required|exists:App\Models\Department,id',
+        ]);
+        $admin_user = User::find($id);
+        $admin_user->update($validated);
+        return redirect()->back();
     }
 }
