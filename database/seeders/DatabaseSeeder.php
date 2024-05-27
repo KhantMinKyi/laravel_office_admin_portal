@@ -3,6 +3,9 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
+use App\Models\Branch;
+use App\Models\Department;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -13,7 +16,17 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         // \App\Models\User::factory(10)->create();
-
+        Branch::create([
+            'city_id' => 1,
+            'township_id' => 2,
+            'name' => 'YanKin Branch',
+        ]);
+        Department::create([
+            'city_id' => 1,
+            'township_id' => 2,
+            'branch_id' => 1,
+            'name' => 'IT Department',
+        ]);
         \App\Models\User::create([
             'email' => 'admin@gmail.com',
             'username' => 'admin',
