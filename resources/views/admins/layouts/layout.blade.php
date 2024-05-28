@@ -15,6 +15,7 @@
         integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 
+
 <body class="dark:bg-mainbody-900">
 
 
@@ -153,14 +154,14 @@
                         </li>
                     </ul>
                 </li>
-                <li>
+                {{-- <li>
                     <a href="#"
                         class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-mainbody-700 group">
                         <i
                             class="fa-solid fa-sack-dollar text-lg text-gray-400 hover:text-mainbody-300 dark:hover:text-mainbody-100 pr-2"></i>
                         <span class="flex-1 ms-3 whitespace-nowrap">Company Finance</span>
                     </a>
-                </li>
+                </li> --}}
                 <li>
                     <a href="{{ route('salary.index') }}"
                         class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-mainbody-700 group">
@@ -286,6 +287,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"
         integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="/js/admin/search.js"></script>
 </body>
 
 </html>

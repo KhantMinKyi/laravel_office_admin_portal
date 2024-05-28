@@ -4,7 +4,7 @@
         <div class="w-full md:w-1/2">
             <form class="flex items-center">
                 <label for="simple-search" class="sr-only">Search</label>
-                <div class="relative w-full">
+                {{-- <div class="relative w-full">
                     <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                         <svg aria-hidden="true" class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor"
                             viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
@@ -14,9 +14,9 @@
                         </svg>
                     </div>
                     <input type="text" id="simple-search"
-                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-mainbody-500 focus:border-mainbody-500 block w-full pl-10 p-2 dark:bg-mainbody-700 dark:border-mainbody-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-mainbody-600 dark:focus:border-mainbody-600"
+                        class="search bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-mainbody-500 focus:border-mainbody-500 block w-full pl-10 p-2 dark:bg-mainbody-700 dark:border-mainbody-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-mainbody-600 dark:focus:border-mainbody-600"
                         placeholder="Search" required="">
-                </div>
+                </div> --}}
             </form>
         </div>
         <div
@@ -35,7 +35,7 @@
     </div>
     {{-- Branch List --}}
     <div class="overflow-x-auto">
-        <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+        <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400 results">
             <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-mainbody-700 dark:text-gray-200">
                 <tr>
                     <th scope="col" class="px-4 py-3 text-sm font-semibold">No</th>
