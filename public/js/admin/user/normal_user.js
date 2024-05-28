@@ -14,10 +14,14 @@ function toddleEncryptEditModel() {
 function togglePopup() {
     popupModel.classList.toggle("hidden");
 }
-function togglePopupEditModel() {
+function togglePopupEditModel(id) {
     popupEditModel.classList.toggle("hidden");
+    if (!popupEditModel.classList.contains("hidden")) {
+        $("#popup-edit-model").load(
+            "/admin/normal_user_list/edit-normal_user-detail/" + id
+        );
+    }
 }
-
 $(document).on("click", "#togglePopupViewModel", function () {
     popupViewModel.classList.toggle("hidden");
     if (!popupViewModel.classList.contains("hidden")) {
@@ -51,4 +55,54 @@ $(document).on("click", "#view-job-tab", function () {
     $("#view-profile-tab ,#view-contact-tab").removeClass(
         "text-mainbody-400 border-mainbody-400"
     );
+});
+$(document).on("click", "#edit-profile-tab", function () {
+    $("#edit-profile").removeClass("hidden");
+    $("#edit-profile-tab").addClass("text-mainbody-400 border-mainbody-400");
+    $("#edit-contact ,#edit-family, #edit-job , #edit-account").addClass(
+        "hidden"
+    );
+    $(
+        "#edit-contact-tab ,#edit-family-tab ,#edit-job-tab,#edit-account-tab"
+    ).removeClass("text-mainbody-400 border-mainbody-400");
+});
+$(document).on("click", "#edit-contact-tab", function () {
+    $("#edit-contact").removeClass("hidden");
+    $("#edit-contact-tab").addClass("text-mainbody-400 border-mainbody-400");
+    $("#edit-profile ,#edit-family, #edit-job , #edit-account").addClass(
+        "hidden"
+    );
+    $(
+        "#edit-profile-tab ,#edit-family-tab ,#edit-job-tab,#edit-account-tab"
+    ).removeClass("text-mainbody-400 border-mainbody-400");
+});
+$(document).on("click", "#edit-family-tab", function () {
+    $("#edit-family").removeClass("hidden");
+    $("#edit-family-tab").addClass("text-mainbody-400 border-mainbody-400");
+    $("#edit-profile ,#edit-contact, #edit-job , #edit-account").addClass(
+        "hidden"
+    );
+    $(
+        "#edit-profile-tab ,#edit-contact-tab ,#edit-job-tab,#edit-account-tab"
+    ).removeClass("text-mainbody-400 border-mainbody-400");
+});
+$(document).on("click", "#edit-job-tab", function () {
+    $("#edit-job").removeClass("hidden");
+    $("#edit-job-tab").addClass("text-mainbody-400 border-mainbody-400");
+    $("#edit-profile ,#edit-contact, #edit-family , #edit-account").addClass(
+        "hidden"
+    );
+    $(
+        "#edit-profile-tab ,#edit-family-tab ,#edit-contact-tab,#edit-account-tab"
+    ).removeClass("text-mainbody-400 border-mainbody-400");
+});
+$(document).on("click", "#edit-account-tab", function () {
+    $("#edit-account").removeClass("hidden");
+    $("#edit-account-tab").addClass("text-mainbody-400 border-mainbody-400");
+    $("#edit-profile ,#edit-contact, #edit-family , #edit-job").addClass(
+        "hidden"
+    );
+    $(
+        "#edit-profile-tab ,#edit-family-tab ,#edit-job-tab,#edit-job-tab"
+    ).removeClass("text-mainbody-400 border-mainbody-400");
 });

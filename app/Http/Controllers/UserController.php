@@ -97,6 +97,36 @@ class UserController extends Controller
             'departments' => $departments,
         ]);
     }
+    public function editOperationUserDetail($id)
+    {
+        $cities = City::select('id', 'name')->get();
+        $townships = Township::select('id', 'name')->get();
+        $branches = Branch::select('id', 'name')->get();
+        $departments = Department::with('branch')->get();
+        $admin_user = User::with('city', 'township', 'branch', 'department')->find($id);
+        return view('admins.partial_view.users.operation_user.edit_user', [
+            'admin_user' => $admin_user,
+            'cities' => $cities,
+            'townships' => $townships,
+            'branches' => $branches,
+            'departments' => $departments,
+        ]);
+    }
+    public function editNormalUserDetail($id)
+    {
+        $cities = City::select('id', 'name')->get();
+        $townships = Township::select('id', 'name')->get();
+        $branches = Branch::select('id', 'name')->get();
+        $departments = Department::with('branch')->get();
+        $admin_user = User::with('city', 'township', 'branch', 'department')->find($id);
+        return view('admins.partial_view.users.normal_user.edit_user', [
+            'admin_user' => $admin_user,
+            'cities' => $cities,
+            'townships' => $townships,
+            'branches' => $branches,
+            'departments' => $departments,
+        ]);
+    }
     public function storeUser(StoreUpdateAdminUserRequest $request)
     {
         $url = $request->getRequestUri();
@@ -157,6 +187,7 @@ class UserController extends Controller
             'branch_id' => 'required|exists:App\Models\Branch,id',
             'department_id' => 'required|exists:App\Models\Department,id',
         ]);
+        $validated['full_name'] = $validated['first_name'] . ' ' . $validated['last_name'];
         $admin_user = User::find($id);
         $admin_user->update($validated);
         return redirect()->back();
