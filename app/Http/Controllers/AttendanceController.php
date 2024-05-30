@@ -34,6 +34,14 @@ class AttendanceController extends Controller
         if (isset($request->user_id)) {
             $query->where('user_id', $user_id);
         }
+        // if (Auth::user()->user_type == 'user' && Auth::user()->is_operation == 0) {
+        //     $query->where('user_id', Auth::user()->id);
+        // }
+        // if (Auth::user()->user_type == 'user' && Auth::user()->is_operation == 1) {
+        //     $query->whereHas('user', function ($query) {
+        //         $query->where('branch_id', Auth::user()->branch_id);
+        //     });
+        // }
         $attendances = $query->get();
         // return $attendances;
         return view('admins.attendance.attendance_list', compact(['attendances', 'lastSixMonth', 'requestMonth', 'users', 'user_id']));

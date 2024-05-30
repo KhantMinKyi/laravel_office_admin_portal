@@ -30,6 +30,16 @@ class SalaryController extends Controller
             $query->whereYear('pay_date', $year)
                 ->whereMonth('pay_date', $monthNumber);
         }
+        if (Auth::user()->user_type == 'user' && Auth::user()->is_operation == 0) {
+            $query->where('user_id', Auth::user()->id);
+        }
+        if (Auth::user()->user_type == 'user' && Auth::user()->is_operation == 1) {
+            $query->whereHas('user', function ($query) {
+                $query->where('branch_id', Auth::user()->branch_id);
+            });
+        }
+
+
         $salaries = $query->get();
         if (Auth::user()->user_type == 'user') {
             return view('users.salary.salary_list', compact('salaries', 'lastSixMonth', 'requestMonth'));
