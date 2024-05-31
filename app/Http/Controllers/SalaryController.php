@@ -34,9 +34,9 @@ class SalaryController extends Controller
             $query->where('user_id', Auth::user()->id);
         }
         if (Auth::user()->user_type == 'user' && Auth::user()->is_operation == 1) {
-            $query->whereHas('user', function ($query) {
-                $query->where('branch_id', Auth::user()->branch_id);
-            });
+            // $query->whereHas('user', function ($query) {
+            //     $query->where('branch_id', Auth::user()->branch_id);
+            // });
         }
 
 
