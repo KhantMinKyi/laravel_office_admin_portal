@@ -14,4 +14,8 @@ class Key extends Model
         'is_active',
         'is_encrypted',
     ];
+    public function key_permissions()
+    {
+        return $this->hasMany(KeyPermission::class);
+    }
 }

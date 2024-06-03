@@ -4,19 +4,17 @@ namespace App\Http\Controllers;
 
 use App\Models\Key;
 use App\Models\KeyPermission;
+use App\Models\User;
 use Illuminate\Http\Request;
 
-class KeyController extends Controller
+class KeyPermissionController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $keys = Key::latest()->get();
-        $key_permissions = KeyPermission::with('key_description', 'user')->get();
-        // return $key_permissions;
-        return view('admins.key_management.key_management_list', compact('keys', 'key_permissions'));
+        //
     }
 
     /**
@@ -24,7 +22,9 @@ class KeyController extends Controller
      */
     public function create()
     {
-        return view('admins.key_management.key_management_create');
+        $keys = Key::all();
+        $users = User::all();
+        return view('admins.key_permission.key_permission_create', compact('keys', 'users'));
     }
 
     /**
@@ -33,13 +33,11 @@ class KeyController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'name' => 'required|string',
-            'key' => 'required|string',
+            'user_id' => 'required',
+            'key_id' => 'required',
+            'key' => 'required',
         ]);
-        $validated['is_active'] = 1;
-        $validated['is_encrypted'] = 1;
-        Key::create($validated);
-
+        KeyPermission::create($validated);
         return redirect()->route('key.index');
     }
 
@@ -56,11 +54,13 @@ class KeyController extends Controller
      */
     public function edit(string $id)
     {
-        $key = Key::find($id);
-        if (!$key) {
+        $keys = Key::all();
+        $users = User::all();
+        $key_permission = KeyPermission::with('key_description', 'user')->where('id', $id)->first();
+        if (!$key_permission) {
             return redirect()->back();
         }
-        return view('admins.key_management.key_management_edit', compact('key'));
+        return view('admins.key_permission.key_permission_edit', compact('key_permission', 'keys', 'users'));
     }
 
     /**
@@ -68,15 +68,19 @@ class KeyController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $key = Key::find($id);
-        if (!$key) {
+        $key_permission = KeyPermission::with('key_description', 'user')->where('id', $id)->first();
+        if (!$key_permission) {
             return redirect()->back();
         }
         $validated = $request->validate([
-            'name' => 'required|string',
-            'key' => 'required|string',
+            'user_id' => 'required',
+            'key_id' => 'required',
+            'key' => 'required',
         ]);
-        $key->update($validated);
+        $validated['is_granded'] = $request->is_granded ?? 0;
+        $validated['is_active'] = $request->is_active ?? 0;
+        // return $validated;
+        $key_permission->update($validated);
         return redirect()->route('key.index');
     }
 

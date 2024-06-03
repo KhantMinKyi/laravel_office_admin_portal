@@ -6,6 +6,7 @@ use App\Http\Controllers\BranchController;
 use App\Http\Controllers\CityController;
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\KeyController;
+use App\Http\Controllers\KeyPermissionController;
 use App\Http\Controllers\LocationManagementController;
 use App\Http\Controllers\SalaryController;
 use App\Http\Controllers\TownshipController;
@@ -39,6 +40,7 @@ Route::prefix('admin')->middleware(['is_admin'])->group(function () {
     Route::resource('salary', SalaryController::class);
     Route::resource('attendance', AttendanceController::class);
     Route::resource('key', KeyController::class);
+    Route::resource('key_permission', KeyPermissionController::class);
     Route::get('/location_management', [LocationManagementController::class, 'index'])->name('location.index');
     Route::get('/admin_profile/{id}', [UserController::class, 'userProfile'])->name('users.admin_profile');
     Route::put('/admin_update/{id}', [UserController::class, 'userUpdate'])->name('users.admin_update');

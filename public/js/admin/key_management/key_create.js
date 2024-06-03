@@ -8,6 +8,11 @@ function generateRandomKey(length) {
     }
     return key;
 }
+$(document).on("change", "#key_id", function () {
+    var selectedOption = $(this).find("option:selected");
+    var encryptedKey = selectedOption.data("encrypted");
+    $("#key").val(encryptedKey);
+});
 $(document).on("click", "#btnGenerateRandomKey", function () {
     const generatedKey = generateRandomKey(32);
     $("#key").val(generatedKey);
