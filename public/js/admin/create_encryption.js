@@ -81,9 +81,9 @@ function decryptBlock(block, keyMatrix) {
     return block;
 }
 
-$(document).on("click", "#btnDecrypt", function () {
-    var selectedOption = $("#encryption_key").find("option:selected");
-    var encryptedKey = selectedOption.data("encryption_key");
+$(document).on("click", "#btnDecryptCreate", function () {
+    var selectedOption = $("#create_encryption_key").find("option:selected");
+    var encryptedKey = selectedOption.data("create_encryption_key");
     $(".data_input").each(function (index) {
         var value = atob($(this).val());
         const keyMatrix = strToMatrix(encryptedKey);
@@ -99,9 +99,9 @@ $(document).on("click", "#btnDecrypt", function () {
     });
 });
 
-$(document).on("click", "#btnEncrypt", function () {
-    var selectedOption = $("#encryption_key").find("option:selected");
-    var encryptedKey = selectedOption.data("encryption_key");
+$(document).on("click", "#btnEncryptCreate", function () {
+    var selectedOption = $("#create_encryption_key").find("option:selected");
+    var encryptedKey = selectedOption.data("create_encryption_key");
     $(".data_input").each(function (index) {
         var value = $(this).val();
         const keyMatrix = strToMatrix(encryptedKey);

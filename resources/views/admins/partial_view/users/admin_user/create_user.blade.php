@@ -46,21 +46,21 @@ $encryption_keys = KeyPermission::where('user_id', Auth::user()->id)->get();
                     <label for="first_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">First
                         name</label>
                     <input type="text" id="first_name" name="first_name"
-                        class="data_input bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-mainbody-300 focus:border-mainbody-300 block w-full p-2.5 dark:bg-mainbody-700 dark:border-mainbody-800 dark:placeholder-mainbody-300 dark:text-white dark:focus:ring-mainbody-600 dark:focus:border-mainbody-600"
+                        class=" bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-mainbody-300 focus:border-mainbody-300 block w-full p-2.5 dark:bg-mainbody-700 dark:border-mainbody-800 dark:placeholder-mainbody-300 dark:text-white dark:focus:ring-mainbody-600 dark:focus:border-mainbody-600"
                         placeholder="Enter First Name" required>
                 </div>
                 <div>
                     <label for="last_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Last
                         name</label>
                     <input type="text" id="last_name" name="last_name"
-                        class="data_input bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-mainbody-300 focus:border-mainbody-300 block w-full p-2.5 dark:bg-mainbody-700 dark:border-mainbody-800 dark:placeholder-mainbody-300 dark:text-white dark:focus:ring-mainbody-600 dark:focus:border-mainbody-600"
+                        class=" bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-mainbody-300 focus:border-mainbody-300 block w-full p-2.5 dark:bg-mainbody-700 dark:border-mainbody-800 dark:placeholder-mainbody-300 dark:text-white dark:focus:ring-mainbody-600 dark:focus:border-mainbody-600"
                         placeholder="Enter Last Name" required>
                 </div>
                 <div>
                     <label for="date_of_birth" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Date
                         of
                         Birth</label>
-                    <input type="date" id="date_of_birth" name="date_of_birth"
+                    <input type="text" id="date_of_birth" name="date_of_birth"
                         class="data_input bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-mainbody-300 focus:border-mainbody-300 block w-full p-2.5 dark:bg-mainbody-700 dark:border-mainbody-800 dark:placeholder-mainbody-300 dark:text-white dark:focus:ring-mainbody-600 dark:focus:border-mainbody-600"
                         placeholder="Date of Birth" required>
                 </div>
@@ -74,12 +74,15 @@ $encryption_keys = KeyPermission::where('user_id', Auth::user()->id)->get();
                 <div>
                     <label for="gender"
                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Gender</label>
-                    <select id="gender" name="gender"
+                    {{-- <select id="gender" name="gender"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-mainbody-300 focus:border-mainbody-300 block w-full p-2.5 dark:bg-mainbody-700 dark:border-mainbody-600 dark:placeholder-mainbody-300 dark:text-white dark:focus:ring-mainbody-800 dark:focus:border-mainbody-800">
                         <option selected disabled>Select Gender</option>
                         <option value="male">Male</option>
                         <option value="female">Female</option>
-                    </select>
+                    </select> --}}
+                    <input type="text" id="gender" name="gender"
+                        class="data_input bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-mainbody-300 focus:border-mainbody-300 block w-full p-2.5 dark:bg-mainbody-700 dark:border-mainbody-800 dark:placeholder-mainbody-300 dark:text-white dark:focus:ring-mainbody-600 dark:focus:border-mainbody-600"
+                        placeholder="Enter Gender" required>
                 </div>
                 <div>
                     <label for="nationality"
@@ -99,14 +102,17 @@ $encryption_keys = KeyPermission::where('user_id', Auth::user()->id)->get();
                     <label for="marital_status"
                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Maritial
                         Status</label>
-                    <select id="marital_status" name='marital_status'
+                    {{-- <select id="marital_status" name='marital_status'
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-mainbody-300 focus:border-mainbody-300 block w-full p-2.5 dark:bg-mainbody-700 dark:border-mainbody-600 dark:placeholder-mainbody-300 dark:text-white dark:focus:ring-mainbody-800 dark:focus:border-mainbody-800">
                         <option selected disabled>Select Status</option>
                         <option value="single" class="p-4">Single</option>
                         <option value="married">Married</option>
                         <option value="divorced">Divorced</option>
                         <option value="widowed">Widowed</option>
-                    </select>
+                    </select> --}}
+                    <input type="text" id="marital_status" name="marital_status"
+                        class="data_input bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-mainbody-300 focus:border-mainbody-300 block w-full p-2.5 dark:bg-mainbody-700 dark:border-mainbody-800 dark:placeholder-mainbody-300 dark:text-white dark:focus:ring-mainbody-600 dark:focus:border-mainbody-600"
+                        placeholder="Enter Yout Marital Status" required>
                 </div>
             </div>
         </div>
@@ -131,7 +137,7 @@ $encryption_keys = KeyPermission::where('user_id', Auth::user()->id)->get();
                 <div>
                     <label for="email"
                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email</label>
-                    <input type="email" id="email" name="email"
+                    <input type="text" id="email" name="email"
                         class="data_input bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-mainbody-300 focus:border-mainbody-300 block w-full p-2.5 dark:bg-mainbody-700 dark:border-mainbody-800 dark:placeholder-mainbody-300 dark:text-white dark:focus:ring-mainbody-600 dark:focus:border-mainbody-600"
                         placeholder="Enter Email" required>
                 </div>
@@ -194,7 +200,7 @@ $encryption_keys = KeyPermission::where('user_id', Auth::user()->id)->get();
                 <div>
                     <label for="start_date" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Start
                         Date</label>
-                    <input type="date" id="start_date" name="start_date"
+                    <input type="text" id="start_date" name="start_date"
                         class="data_input bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-mainbody-300 focus:border-mainbody-300 block w-full p-2.5 dark:bg-mainbody-700 dark:border-mainbody-800 dark:placeholder-mainbody-300 dark:text-white dark:focus:ring-mainbody-600 dark:focus:border-mainbody-600"
                         placeholder="Enter Start Date" required>
                 </div>
@@ -238,7 +244,7 @@ $encryption_keys = KeyPermission::where('user_id', Auth::user()->id)->get();
                     <label for="username" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">User
                         Name</label>
                     <input type="text" id="username" name="username"
-                        class="data_input bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-mainbody-300 focus:border-mainbody-300 block w-full p-2.5 dark:bg-mainbody-700 dark:border-mainbody-800 dark:placeholder-mainbody-300 dark:text-white dark:focus:ring-mainbody-600 dark:focus:border-mainbody-600"
+                        class=" bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-mainbody-300 focus:border-mainbody-300 block w-full p-2.5 dark:bg-mainbody-700 dark:border-mainbody-800 dark:placeholder-mainbody-300 dark:text-white dark:focus:ring-mainbody-600 dark:focus:border-mainbody-600"
                         placeholder="Enter Username" required>
                     @error('username')
                         <span class="text-sm text-red-600 dark:text-red-500">{{ $message }}</span>
@@ -248,7 +254,7 @@ $encryption_keys = KeyPermission::where('user_id', Auth::user()->id)->get();
                     <label for="password"
                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password</label>
                     <input type="password" id="password" name="password"
-                        class="data_input bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-mainbody-300 focus:border-mainbody-300 block w-full p-2.5 dark:bg-mainbody-700 dark:border-mainbody-800 dark:placeholder-mainbody-300 dark:text-white dark:focus:ring-mainbody-600 dark:focus:border-mainbody-600"
+                        class=" bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-mainbody-300 focus:border-mainbody-300 block w-full p-2.5 dark:bg-mainbody-700 dark:border-mainbody-800 dark:placeholder-mainbody-300 dark:text-white dark:focus:ring-mainbody-600 dark:focus:border-mainbody-600"
                         placeholder="Enter Password" required>
                 </div>
             </div>
@@ -262,23 +268,23 @@ $encryption_keys = KeyPermission::where('user_id', Auth::user()->id)->get();
             <div class="encrypt-model " id="encrypt-model">
                 <div class="grid gap-6 mt-6 md:grid-cols-2">
                     <div>
-                        <label for="encryption_key"
+                        <label for="create_encryption_key"
                             class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Encryption Key</label>
-                        <select id="encryption_key" name="encryption_key"
-                            class=" bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-mainbody-300 focus:border-mainbody-300 block w-full p-2.5 dark:bg-mainbody-700 dark:border-mainbody-600 dark:placeholder-mainbody-300 dark:text-white dark:focus:ring-mainbody-800 dark:focus:border-mainbody-800">
+                        <select id="create_encryption_key" name="create_encryption_key"
+                            class="encryption_key bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-mainbody-300 focus:border-mainbody-300 block w-full p-2.5 dark:bg-mainbody-700 dark:border-mainbody-600 dark:placeholder-mainbody-300 dark:text-white dark:focus:ring-mainbody-800 dark:focus:border-mainbody-800">
                             <option selected disabled>Select Encryption Key</option>
                             @foreach ($encryption_keys as $encryption_key)
                                 <option value="{{ $encryption_key->key }}"
-                                    data-encryption_key="{{ $encryption_key->key }}">
+                                    data-create_encryption_key="{{ $encryption_key->key }}">
                                     {{ $encryption_key->key_description->name }}
                                 </option>
                             @endforeach
                         </select>
                     </div>
                     <div>
-                        <a href="#" id="btnEncrypt"
+                        <a href="#" id="btnEncryptCreate"
                             class=" float-right mt-6 text-white bg-mainbody-300 hover:bg-mainbody-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-mainbody-600 dark:hover:bg-mainbody-700 dark:focus:ring-mainbody-800">Encrypt</a>
-                        <a href="#" id="btnDecrypt"
+                        <a href="#" id="btnDecryptCreate"
                             class=" float-right mt-6 mr-4 text-white bg-mainbody-300 hover:bg-mainbody-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-mainbody-600 dark:hover:bg-mainbody-700 dark:focus:ring-mainbody-800">Decrypt</a>
                     </div>
                 </div>

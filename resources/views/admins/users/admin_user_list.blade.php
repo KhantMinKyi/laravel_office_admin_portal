@@ -185,5 +185,6 @@
         integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="/js/admin/user/admin_user.js"></script>
-    <script src="/js/admin/encryption.js"></script>
+    <script src="/js/admin/create_encryption.js"></script>
+    <script src="/js/admin/edit_encryption.js"></script>
 @endsection

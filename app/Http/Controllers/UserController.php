@@ -133,6 +133,7 @@ class UserController extends Controller
         // return $url;
         $validated = $request->validated();
         $validated['full_name'] = $validated['first_name'] . ' ' . $validated['last_name'];
+        // return $validated;
         // admin
         if ($url == '/admin/admin_user_list/store-admin_user') {
             $validated['user_type'] = 'admin';
@@ -168,19 +169,19 @@ class UserController extends Controller
             'username' => ['required', 'string', Rule::unique('users', 'username')->ignore($id, 'id')],
             'first_name' => 'required|string',
             'last_name' => 'required|string',
-            'date_of_birth' => 'required|date',
+            'date_of_birth' => 'required|string',
             'nrc' => 'nullable',
-            'gender' => ['required', Rule::in(config('enums.gender'))],
+            'gender' => 'required',
             'nationality' => 'nullable|string',
-            'marital_status' => ['required', Rule::in(config('enums.marital_status'))],
+            'marital_status' => 'required',
             'degree' => 'nullable|string',
             'phone_1' => 'required|string',
             'phone_2' => 'nullable|string',
-            'email' => ['required', 'email', Rule::unique('users', 'email')->ignore($id, 'id')],
+            'email' => ['required', 'string', Rule::unique('users', 'email')->ignore($id, 'id')],
             'address' => 'required|string',
             'father_name' => 'required|string',
             'contact_phone' => 'nullable|string',
-            'start_date' => 'required|date',
+            'start_date' => 'required|string',
             'position' => 'nullable|string',
             'city_id' => 'required|exists:App\Models\City,id',
             'township_id' => 'required|exists:App\Models\Township,id',
@@ -188,6 +189,7 @@ class UserController extends Controller
             'department_id' => 'required|exists:App\Models\Department,id',
         ]);
         $validated['full_name'] = $validated['first_name'] . ' ' . $validated['last_name'];
+        // return $validated;
         $admin_user = User::find($id);
         $admin_user->update($validated);
         return redirect()->back();

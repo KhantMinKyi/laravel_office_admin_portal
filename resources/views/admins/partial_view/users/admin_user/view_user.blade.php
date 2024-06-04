@@ -105,7 +105,7 @@
                                                                 Of Birth</label>
                                                             <h4
                                                                 class=" bg-gray-100 dark:bg-mainbody-700 p-2 rounded font-medium">
-                                                                {{ date('d.m.Y', strToTime($admin_user->date_of_birth)) }}
+                                                                {{ $admin_user->date_of_birth }}
                                                             </h4>
                                                         </div>
                                                         <div>
