@@ -1,3 +1,11 @@
+<?php
+use App\Models\KeyPermission;
+$encryption_keys = KeyPermission::where('user_id', Auth::user()->id)
+    ->where('is_granded', 1)
+    ->where('is_active', 1)
+    ->get();
+?>
+
 <div class="fixed top-10 right-0 bottom-0 left-0 bg-black opacity-50">
 </div>
 <div class="flex items-center justify-center">
@@ -10,7 +18,7 @@
             </svg>
         </button>
         <div>
-            <h4 class="flex justify-center mb-4 font-semibold text-gray-500 dark:text-gray-100">Edit Operation Form
+            <h4 class="flex justify-center mb-4 font-semibold text-gray-500 dark:text-gray-100">Edit Operation User Form
             </h4>
 
             <div class="mb-4 border-b border-gray-200 dark:border-mainbody-700">
@@ -62,9 +70,6 @@
                                 <input type="text" id="edit_first_name" name="first_name"
                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-mainbody-300 focus:border-mainbody-300 block w-full p-2.5 dark:bg-mainbody-700 dark:border-mainbody-800 dark:placeholder-mainbody-300 dark:text-white dark:focus:ring-mainbody-600 dark:focus:border-mainbody-600"
                                     placeholder="Enter First Name" required value="{{ $admin_user->first_name }}">
-                                @if ($errors->has('email'))
-                                    <span class="text-sm text-red-600 dark:text-red-500">{{ errors('message') }}</span>
-                                @endif
                             </div>
                             <div>
                                 <label for="last_name"
@@ -79,59 +84,53 @@
                                     class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Date
                                     of
                                     Birth</label>
-                                <input type="date" id="edit_date_of_birth" name="date_of_birth"
-                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-mainbody-300 focus:border-mainbody-300 block w-full p-2.5 dark:bg-mainbody-700 dark:border-mainbody-800 dark:placeholder-mainbody-300 dark:text-white dark:focus:ring-mainbody-600 dark:focus:border-mainbody-600"
+                                <input type="text" id="edit_date_of_birth" name="date_of_birth"
+                                    class="data_input bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-mainbody-300 focus:border-mainbody-300 block w-full p-2.5 dark:bg-mainbody-700 dark:border-mainbody-800 dark:placeholder-mainbody-300 dark:text-white dark:focus:ring-mainbody-600 dark:focus:border-mainbody-600"
                                     placeholder="Date of Birth" required value="{{ $admin_user->date_of_birth }}">
                             </div>
                             <div>
                                 <label for="nrc"
                                     class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">NRC</label>
                                 <input type="text" id="edit_nrc" name="nrc"
-                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-mainbody-300 focus:border-mainbody-300 block w-full p-2.5 dark:bg-mainbody-700 dark:border-mainbody-800 dark:placeholder-mainbody-300 dark:text-white dark:focus:ring-mainbody-600 dark:focus:border-mainbody-600"
+                                    class="data_input bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-mainbody-300 focus:border-mainbody-300 block w-full p-2.5 dark:bg-mainbody-700 dark:border-mainbody-800 dark:placeholder-mainbody-300 dark:text-white dark:focus:ring-mainbody-600 dark:focus:border-mainbody-600"
                                     placeholder="Enter NRC" required value="{{ $admin_user->nrc }}">
                             </div>
                             <div>
                                 <label for="gender"
                                     class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Gender</label>
-                                <select id="edit_gender" name="gender"
+                                {{-- <select id="edit_gender" name="gender"
                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-mainbody-300 focus:border-mainbody-300 block w-full p-2.5 dark:bg-mainbody-700 dark:border-mainbody-600 dark:placeholder-mainbody-300 dark:text-white dark:focus:ring-mainbody-800 dark:focus:border-mainbody-800">
                                     <option selected disabled>Select Gender</option>
                                     <option value="male" @if ($admin_user->gender == 'male') selected @endif>Male
                                     </option>
                                     <option value="female" @if ($admin_user->gender == 'female') selected @endif>Female
                                     </option>
-                                </select>
+                                </select> --}}
+                                <input type="text" id="edit_gender" name="gender"
+                                    class="data_input bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-mainbody-300 focus:border-mainbody-300 block w-full p-2.5 dark:bg-mainbody-700 dark:border-mainbody-800 dark:placeholder-mainbody-300 dark:text-white dark:focus:ring-mainbody-600 dark:focus:border-mainbody-600"
+                                    placeholder="Gender" required value="{{ $admin_user->gender }}">
                             </div>
                             <div>
                                 <label for="nationality"
                                     class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nationality</label>
                                 <input type="text" id="edit_nationality" name="nationality"
-                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-mainbody-300 focus:border-mainbody-300 block w-full p-2.5 dark:bg-mainbody-700 dark:border-mainbody-800 dark:placeholder-mainbody-300 dark:text-white dark:focus:ring-mainbody-600 dark:focus:border-mainbody-600"
+                                    class="data_input bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-mainbody-300 focus:border-mainbody-300 block w-full p-2.5 dark:bg-mainbody-700 dark:border-mainbody-800 dark:placeholder-mainbody-300 dark:text-white dark:focus:ring-mainbody-600 dark:focus:border-mainbody-600"
                                     placeholder="Enter Nationality" required value="{{ $admin_user->nationality }}">
                             </div>
                             <div>
                                 <label for="degree"
                                     class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Degree</label>
                                 <input type="text" id="edit_degree" name="degree"
-                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-mainbody-300 focus:border-mainbody-300 block w-full p-2.5 dark:bg-mainbody-700 dark:border-mainbody-800 dark:placeholder-mainbody-300 dark:text-white dark:focus:ring-mainbody-600 dark:focus:border-mainbody-600"
+                                    class="data_input bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-mainbody-300 focus:border-mainbody-300 block w-full p-2.5 dark:bg-mainbody-700 dark:border-mainbody-800 dark:placeholder-mainbody-300 dark:text-white dark:focus:ring-mainbody-600 dark:focus:border-mainbody-600"
                                     placeholder="Enter Degree" required value="{{ $admin_user->degree }}">
                             </div>
                             <div>
                                 <label for="marital_status"
                                     class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Maritial
                                     Status</label>
-                                <select id="edit_marital_status" name="marital_status"
-                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-mainbody-300 focus:border-mainbody-300 block w-full p-2.5 dark:bg-mainbody-700 dark:border-mainbody-600 dark:placeholder-mainbody-300 dark:text-white dark:focus:ring-mainbody-800 dark:focus:border-mainbody-800">
-                                    <option selected disabled>Select Status</option>
-                                    <option value="single" @if ($admin_user->marital_status == 'single') selected @endif>Single
-                                    </option>
-                                    <option value="married" @if ($admin_user->marital_status == 'married') selected @endif>Married
-                                    </option>
-                                    <option value="divorced" @if ($admin_user->marital_status == 'divorced') selected @endif>Divorced
-                                    </option>
-                                    <option value="widowed" @if ($admin_user->marital_status == 'widowed') selected @endif>Widowed
-                                    </option>
-                                </select>
+                                <input type="text" id="edit_marital_status" name="marital_status"
+                                    class="data_input bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-mainbody-300 focus:border-mainbody-300 block w-full p-2.5 dark:bg-mainbody-700 dark:border-mainbody-800 dark:placeholder-mainbody-300 dark:text-white dark:focus:ring-mainbody-600 dark:focus:border-mainbody-600"
+                                    placeholder="marital_status" required value="{{ $admin_user->marital_status }}">
                             </div>
                         </div>
                     </div>
@@ -144,7 +143,7 @@
                                     class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Phone
                                     1</label>
                                 <input type="text" id="edit_phone_1" name="phone_1"
-                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-mainbody-300 focus:border-mainbody-300 block w-full p-2.5 dark:bg-mainbody-700 dark:border-mainbody-800 dark:placeholder-mainbody-300 dark:text-white dark:focus:ring-mainbody-600 dark:focus:border-mainbody-600"
+                                    class="data_input bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-mainbody-300 focus:border-mainbody-300 block w-full p-2.5 dark:bg-mainbody-700 dark:border-mainbody-800 dark:placeholder-mainbody-300 dark:text-white dark:focus:ring-mainbody-600 dark:focus:border-mainbody-600"
                                     placeholder="Enter Phone 1" required value="{{ $admin_user->phone_1 }}">
                             </div>
                             <div>
@@ -152,21 +151,21 @@
                                     class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Phone
                                     2</label>
                                 <input type="text" id="edit_phone_2" name="phone_2"
-                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-mainbody-300 focus:border-mainbody-300 block w-full p-2.5 dark:bg-mainbody-700 dark:border-mainbody-800 dark:placeholder-mainbody-300 dark:text-white dark:focus:ring-mainbody-600 dark:focus:border-mainbody-600"
+                                    class="data_input bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-mainbody-300 focus:border-mainbody-300 block w-full p-2.5 dark:bg-mainbody-700 dark:border-mainbody-800 dark:placeholder-mainbody-300 dark:text-white dark:focus:ring-mainbody-600 dark:focus:border-mainbody-600"
                                     placeholder="Enter Phone 2" required value="{{ $admin_user->phone_2 }}">
                             </div>
                             <div>
                                 <label for="email"
                                     class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email</label>
-                                <input type="email" id="edit_email" name="email"
-                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-mainbody-300 focus:border-mainbody-300 block w-full p-2.5 dark:bg-mainbody-700 dark:border-mainbody-800 dark:placeholder-mainbody-300 dark:text-white dark:focus:ring-mainbody-600 dark:focus:border-mainbody-600"
+                                <input type="text" id="edit_email" name="email"
+                                    class="data_input bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-mainbody-300 focus:border-mainbody-300 block w-full p-2.5 dark:bg-mainbody-700 dark:border-mainbody-800 dark:placeholder-mainbody-300 dark:text-white dark:focus:ring-mainbody-600 dark:focus:border-mainbody-600"
                                     placeholder="Enter Email" required value="{{ $admin_user->email }}">
                             </div>
                             <div>
                                 <label for="address"
                                     class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Address</label>
                                 <input type="text" id="edit_address" name="address"
-                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-mainbody-300 focus:border-mainbody-300 block w-full p-2.5 dark:bg-mainbody-700 dark:border-mainbody-800 dark:placeholder-mainbody-300 dark:text-white dark:focus:ring-mainbody-600 dark:focus:border-mainbody-600"
+                                    class="data_input bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-mainbody-300 focus:border-mainbody-300 block w-full p-2.5 dark:bg-mainbody-700 dark:border-mainbody-800 dark:placeholder-mainbody-300 dark:text-white dark:focus:ring-mainbody-600 dark:focus:border-mainbody-600"
                                     placeholder="Enter Address" required value="{{ $admin_user->address }}">
                             </div>
                             <div>
@@ -206,7 +205,7 @@
                                     class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Father
                                     name</label>
                                 <input type="text" id="edit__father_name" name="father_name"
-                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-mainbody-300 focus:border-mainbody-300 block w-full p-2.5 dark:bg-mainbody-700 dark:border-mainbody-800 dark:placeholder-mainbody-300 dark:text-white dark:focus:ring-mainbody-600 dark:focus:border-mainbody-600"
+                                    class="data_input bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-mainbody-300 focus:border-mainbody-300 block w-full p-2.5 dark:bg-mainbody-700 dark:border-mainbody-800 dark:placeholder-mainbody-300 dark:text-white dark:focus:ring-mainbody-600 dark:focus:border-mainbody-600"
                                     placeholder="Enter Father Name" required value="{{ $admin_user->father_name }}">
                             </div>
                             <div>
@@ -214,7 +213,7 @@
                                     class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Contact
                                     Phone</label>
                                 <input type="text" id="edit__contact_phone" name="contact_phone"
-                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-mainbody-300 focus:border-mainbody-300 block w-full p-2.5 dark:bg-mainbody-700 dark:border-mainbody-800 dark:placeholder-mainbody-300 dark:text-white dark:focus:ring-mainbody-600 dark:focus:border-mainbody-600"
+                                    class="data_input bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-mainbody-300 focus:border-mainbody-300 block w-full p-2.5 dark:bg-mainbody-700 dark:border-mainbody-800 dark:placeholder-mainbody-300 dark:text-white dark:focus:ring-mainbody-600 dark:focus:border-mainbody-600"
                                     placeholder="Enter Contact Phone" required
                                     value="{{ $admin_user->contact_phone }}">
                             </div>
@@ -228,15 +227,15 @@
                                 <label for="start_date"
                                     class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Start
                                     Date</label>
-                                <input type="date" id="edit_start_date" name="start_date"
-                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-mainbody-300 focus:border-mainbody-300 block w-full p-2.5 dark:bg-mainbody-700 dark:border-mainbody-800 dark:placeholder-mainbody-300 dark:text-white dark:focus:ring-mainbody-600 dark:focus:border-mainbody-600"
+                                <input type="text" id="edit_start_date" name="start_date"
+                                    class="data_input bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-mainbody-300 focus:border-mainbody-300 block w-full p-2.5 dark:bg-mainbody-700 dark:border-mainbody-800 dark:placeholder-mainbody-300 dark:text-white dark:focus:ring-mainbody-600 dark:focus:border-mainbody-600"
                                     placeholder="Enter Start Date" required value="{{ $admin_user->start_date }}">
                             </div>
                             <div>
                                 <label for="position"
                                     class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Position</label>
                                 <input type="text" id="edit_position" name="position"
-                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-mainbody-300 focus:border-mainbody-300 block w-full p-2.5 dark:bg-mainbody-700 dark:border-mainbody-800 dark:placeholder-mainbody-300 dark:text-white dark:focus:ring-mainbody-600 dark:focus:border-mainbody-600"
+                                    class="data_input bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-mainbody-300 focus:border-mainbody-300 block w-full p-2.5 dark:bg-mainbody-700 dark:border-mainbody-800 dark:placeholder-mainbody-300 dark:text-white dark:focus:ring-mainbody-600 dark:focus:border-mainbody-600"
                                     placeholder="Enter Position" required value="{{ $admin_user->position }}">
                             </div>
                         </div>
@@ -288,7 +287,35 @@
                                     placeholder="Enter Password" required value="{{ $admin_user->password }}">
                             </div>
                         </div>
-
+                        <div class="encrypt-model " id="encrypt-model">
+                            <div class="grid gap-6 mt-6 md:grid-cols-2">
+                                <div>
+                                    <label for="edit_encryption_key"
+                                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Encryption
+                                        Key</label>
+                                    <select id="edit_encryption_key" name="edit_encryption_key"
+                                        class=" edit_encryption_key bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-mainbody-300 focus:border-mainbody-300 block w-full p-2.5 dark:bg-mainbody-700 dark:border-mainbody-600 dark:placeholder-mainbody-300 dark:text-white dark:focus:ring-mainbody-800 dark:focus:border-mainbody-800">
+                                        <option selected disabled>Select Encryption Key</option>
+                                        @foreach ($encryption_keys as $encryption_key)
+                                            <option value="{{ $encryption_key->key }}"
+                                                data-edit_encryption_key="{{ $encryption_key->key }}">
+                                                {{ $encryption_key->key_description->name }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div>
+                                    <a href="#" id="btnEncryptEdit"
+                                        class=" float-right mt-6 text-white bg-mainbody-300 hover:bg-mainbody-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-mainbody-600 dark:hover:bg-mainbody-700 dark:focus:ring-mainbody-800">Encrypt</a>
+                                    <a href="#" id="btnDecryptEdit"
+                                        class=" float-right mt-6 mr-4 text-white bg-mainbody-300 hover:bg-mainbody-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-mainbody-600 dark:hover:bg-mainbody-700 dark:focus:ring-mainbody-800">Decrypt</a>
+                                </div>
+                            </div>
+                            {{-- <div>
+                            <button type="submit"
+                                class="content-end mt-2 text-white bg-mainbody-300 hover:bg-mainbody-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-mainbody-600 dark:hover:bg-mainbody-700 dark:focus:ring-mainbody-800">Generate</button>
+                        </div> --}}
+                        </div>
                     </div>
                     <button type="submit"
                         class=" float-right mt-6 text-white bg-mainbody-300 hover:bg-mainbody-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-mainbody-600 dark:hover:bg-mainbody-700 dark:focus:ring-mainbody-800">Submit</button>

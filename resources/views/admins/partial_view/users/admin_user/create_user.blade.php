@@ -1,6 +1,9 @@
 <?php
 use App\Models\KeyPermission;
-$encryption_keys = KeyPermission::where('user_id', Auth::user()->id)->get();
+$encryption_keys = KeyPermission::where('user_id', Auth::user()->id)
+    ->where('is_granded', 1)
+    ->where('is_active', 1)
+    ->get();
 ?>
 <div class="mb-4 border-b border-gray-200 dark:border-mainbody-700">
     <ul class="flex flex-wrap -mb-px text-sm font-medium text-center" id="default-tab"

@@ -1,6 +1,9 @@
 <?php
 use App\Models\KeyPermission;
-$encryption_keys = KeyPermission::where('user_id', Auth::user()->id)->get();
+$encryption_keys = KeyPermission::where('user_id', Auth::user()->id)
+    ->where('is_granded', 1)
+    ->where('is_active', 1)
+    ->get();
 ?>
 
 <div class="fixed top-10 right-0 bottom-0 left-0 bg-black opacity-50">
@@ -125,18 +128,6 @@ $encryption_keys = KeyPermission::where('user_id', Auth::user()->id)->get();
                                 <label for="marital_status"
                                     class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Maritial
                                     Status</label>
-                                {{-- <select id="edit_marital_status" name="marital_status"
-                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-mainbody-300 focus:border-mainbody-300 block w-full p-2.5 dark:bg-mainbody-700 dark:border-mainbody-600 dark:placeholder-mainbody-300 dark:text-white dark:focus:ring-mainbody-800 dark:focus:border-mainbody-800">
-                                    <option selected disabled>Select Status</option>
-                                    <option value="single" @if ($admin_user->marital_status == 'single') selected @endif>Single
-                                    </option>
-                                    <option value="married" @if ($admin_user->marital_status == 'married') selected @endif>Married
-                                    </option>
-                                    <option value="divorced" @if ($admin_user->marital_status == 'divorced') selected @endif>Divorced
-                                    </option>
-                                    <option value="widowed" @if ($admin_user->marital_status == 'widowed') selected @endif>Widowed
-                                    </option>
-                                </select> --}}
                                 <input type="text" id="edit_marital_status" name="marital_status"
                                     class="data_input bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-mainbody-300 focus:border-mainbody-300 block w-full p-2.5 dark:bg-mainbody-700 dark:border-mainbody-800 dark:placeholder-mainbody-300 dark:text-white dark:focus:ring-mainbody-600 dark:focus:border-mainbody-600"
                                     placeholder="marital_status" required value="{{ $admin_user->marital_status }}">
