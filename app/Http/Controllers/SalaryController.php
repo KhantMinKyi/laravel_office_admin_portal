@@ -69,7 +69,7 @@ class SalaryController extends Controller
     {
         $validated = $request->validate([
             'user_id' => 'required|numeric',
-            'salary' => 'required|numeric',
+            'salary' => 'required',
             'pay_date' => 'required|date',
             'description' => 'nullable|string',
             'is_encrypted' => 'nullable|numeric',
@@ -126,7 +126,7 @@ class SalaryController extends Controller
         }
         $validated = $request->validate([
             'user_id' => 'required|numeric',
-            'salary' => 'required|numeric',
+            'salary' => 'required',
             'pay_date' => 'required|date',
             'description' => 'nullable|string',
             'is_encrypted' => 'nullable|numeric',

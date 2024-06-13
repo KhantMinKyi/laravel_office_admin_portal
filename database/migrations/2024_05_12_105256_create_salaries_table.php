@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('salaries', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained('users')->cascadeOnUpdate()->cascadeOnDelete();
-            $table->integer('salary');
+            $table->string('salary');
             $table->date('pay_date');
             $table->string('description')->nullable()->default(null);
             $table->boolean('is_encrypted')->default(0);
