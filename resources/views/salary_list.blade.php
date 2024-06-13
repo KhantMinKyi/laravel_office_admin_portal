@@ -5,6 +5,16 @@
 
 @section('content')
     {{-- Salary  List table --}}
+    <?php
+    use App\Models\KeyPermission;
+    $encryption_keys = KeyPermission::where('user_id', Auth::user()->id)
+        ->where('is_granded', 1)
+        ->where('is_active', 1)
+        ->get();
+    // $test1 = 'hello';
+    // $test2 = 'hello2';
+    // $test3 = $test1 + $test2;
+    ?>
     <div class="p-4  relative ">
         <section class=" dark:bg-mainbody-900 p-3 sm:p-5">
             <div class="mx-auto  px-4 lg:px-12">
@@ -58,8 +68,49 @@
                                 Search
                             </button>
                         </div>
-                        </form>
 
+                        </form>
+                        <div>
+                            <select id="view_encryption_key" name="view_encryption_key"
+                                class="encryption_key bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-mainbody-300 focus:border-mainbody-300 block w-full p-2.5 dark:bg-mainbody-700 dark:border-mainbody-600 dark:placeholder-mainbody-300 dark:text-white dark:focus:ring-mainbody-800 dark:focus:border-mainbody-800">
+                                <option selected disabled>Select Encryption Key</option>
+                                @foreach ($encryption_keys as $encryption_key)
+                                    <option value="{{ $encryption_key->key }}"
+                                        data-view_encryption_key="{{ $encryption_key->key }}">
+                                        {{ $encryption_key->key_description->name }}
+                                    </option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="flex items-center space-x-3 w-full md:w-auto">
+                            <button id="actionsDropdownButton" data-dropdown-toggle="actionsDropdown"
+                                class="w-full md:w-auto flex items-center justify-center py-2 px-4 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-mainbody-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-mainbody-800 dark:text-gray-400 dark:border-mainbody-600 dark:hover:text-white dark:hover:bg-mainbody-700"
+                                type="button">
+                                <svg class="-ml-1 mr-1.5 w-5 h-5" fill="currentColor" viewbox="0 0 20 20"
+                                    xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                    <path clip-rule="evenodd" fill-rule="evenodd"
+                                        d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" />
+                                </svg>
+                                Actions
+                            </button>
+                            <div id="actionsDropdown"
+                                class="hidden z-10 w-44 bg-white rounded divide-y divide-gray-100 shadow dark:bg-mainbody-700 dark:divide-mainbody-600">
+                                <ul class="py-1 text-sm text-gray-700 dark:text-gray-200"
+                                    aria-labelledby="actionsDropdownButton">
+                                    <li>
+                                        <a href="#" id="btnEncryptView"
+                                            class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-mainbody-600 dark:hover:text-white"><i
+                                                class="fa-solid fa-key mr-2"></i> <i> Encrypt All</i> </a>
+                                    </li>
+                                </ul>
+                                <div class="py-1">
+                                    <a href="#" id="btnDecryptView"
+                                        class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-mainbody-600 dark:text-gray-200 dark:hover:text-white">
+                                        <i class="fa-solid fa-lock-open mr-2"></i>
+                                        <i>Decrypt All</i></a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="overflow-x-auto">
                         <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400 results">
@@ -86,7 +137,7 @@
                                             class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                             {{ $salary->user->full_name }}</th>
                                         <td class="px-4 py-3">{{ $salary->user->username }}</td>
-                                        <td class="px-4 py-3">{{ $salary->salary }} Kyats</td>
+                                        <td class="data_input_view px-4 py-3">{{ $salary->salary }}</td>
                                         <td class="px-4 py-3">{{ $salary->pay_date }}</td>
                                         <td class="px-4 py-3 flex items-center justify-end" data-id="{{ $salary->id }}">
                                             {{-- view button --}}
@@ -104,13 +155,13 @@
                                         </td>
                                     </tr>
                                     @php
-                                        $total += $salary->salary;
+                                        // $total += $salary->salary;
                                     @endphp
                                 @endforeach
                                 <tr>
                                     <td class="px-4 py-3"></td>
                                     <td class="px-4 py-3 font-bold dark:text-white">Total</td>
-                                    <td class="px-4 py-3 font-bold dark:text-white">{{ $total }} Kyats</td>
+                                    <td class="total px-4 py-3 font-bold dark:text-white">{{ $total }} Kyats</td>
                                     <td class="px-4 py-3"></td>
                                     <td class="px-4 py-3"></td>
                                 </tr>
@@ -122,4 +173,19 @@
             </div>
         </section>
     </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"
+        integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="/js/admin/view_encryption.js"></script>
+    <script>
+        $(document).on('click', '#btnDecryptView', function() {
+
+            var total = 0;
+            $(".data_input_view").each(function(index) {
+                var value = parseFloat($(this).text());
+                total += value;
+            });
+            $('.total').text(total + ' Kyat');
+        });
+    </script>
 @endsection
