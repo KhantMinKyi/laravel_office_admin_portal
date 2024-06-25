@@ -38,6 +38,7 @@ $encryption_keys = KeyPermission::where('user_id', Auth::user()->id)
                         </select>
                     </div>
                 </div>
+                {{-- For City --}}
                 <div class="encrypt-model " id="encrypt-model">
                     <div class="grid gap-6 mt-6 md:grid-cols-2">
                         <div>
@@ -82,6 +83,7 @@ $encryption_keys = KeyPermission::where('user_id', Auth::user()->id)
                         </select>
                     </div>
                 </div>
+                {{-- For Township --}}
                 <div class="encrypt-model " id="encrypt-model">
                     <div class="grid gap-6 mt-6 md:grid-cols-2">
                         <div>

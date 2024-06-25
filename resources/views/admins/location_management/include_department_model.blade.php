@@ -3,7 +3,7 @@
     <div class="fixed top-10 right-0 bottom-0 left-0 bg-black opacity-50">
     </div>
     <div class="flex items-center justify-center">
-        <div class="p-10 bg-white text-black dark:bg-mainbody-800 dark:text-white relative rounded w-1/2 xl:w-1/3">
+        <div class="p-10 bg-white text-black dark:bg-mainbody-800 dark:text-white relative rounded">
             <button class="absolute top-0 right-0 px-4 pt-4 " onclick="togglePopupDepartmentAddModel()">
                 <svg xmlns="http://www.w3.org/2000/svg" height="16" width="12" viewBox="0 0 384 512">
                     <!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
