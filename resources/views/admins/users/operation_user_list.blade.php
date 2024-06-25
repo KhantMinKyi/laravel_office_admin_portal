@@ -190,4 +190,10 @@
     <script src="/js/admin/view_encryption.js"></script>
     <script src="/js/admin/create_encryption.js"></script>
     <script src="/js/admin/edit_encryption.js"></script>
+    <script src="/js/admin/location_management/city/create_encryption_for_admin.js"></script>
+    <script src="/js/admin/location_management/township/create_encryption_for_admin.js"></script>
+    <script src="/js/admin/location_management/township/edit_encryption_for_admin.js"></script>
+    <script src="/js/admin/location_management/city/edit_encryption_for_admin.js"></script>
+    <script src="/js/admin/location_management/township/view_encryption_for_admin.js"></script>
+    <script src="/js/admin/location_management/city/view_encryption_for_admin.js"></script>
 @endsection

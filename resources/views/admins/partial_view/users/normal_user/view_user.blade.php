@@ -223,14 +223,14 @@ $encryption_keys = KeyPermission::where('user_id', Auth::user()->id)
                                                             <label for="city"
                                                                 class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">City</label>
                                                             <h4
-                                                                class=" bg-gray-100 dark:bg-mainbody-700 p-2 rounded font-medium">
+                                                                class="data_input_view_city_for_admin bg-gray-100 dark:bg-mainbody-700 p-2 rounded font-medium">
                                                                 {{ $normal_user->city->name }}</h4>
                                                         </div>
                                                         <div>
                                                             <label for="township"
                                                                 class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Township</label>
                                                             <h4
-                                                                class=" bg-gray-100 dark:bg-mainbody-700 p-2 rounded font-medium">
+                                                                class="data_input_view_township_for_admin bg-gray-100 dark:bg-mainbody-700 p-2 rounded font-medium">
                                                                 {{ $normal_user->township->name }}</h4>
                                                         </div>
                                                         <div>
@@ -248,6 +248,60 @@ $encryption_keys = KeyPermission::where('user_id', Auth::user()->id)
                                                             <h4
                                                                 class="data_input_view bg-gray-100 dark:bg-mainbody-700 p-2 rounded font-medium">
                                                                 {{ $normal_user->contact_phone ?? '-' }}</h4>
+                                                        </div>
+                                                    </div>
+                                                    {{-- For City --}}
+                                                    <div class="encrypt-model " id="encrypt-model">
+                                                        <div class="grid gap-6 mt-6 md:grid-cols-2">
+                                                            <div>
+                                                                <label for="view_city_for_admin_encryption_key"
+                                                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Encryption
+                                                                    Key For City </label>
+                                                                <select id="view_city_for_admin_encryption_key"
+                                                                    name="view_city_for_admin_encryption_key"
+                                                                    class="encryption_key bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-mainbody-300 focus:border-mainbody-300 block w-full p-2.5 dark:bg-mainbody-700 dark:border-mainbody-600 dark:placeholder-mainbody-300 dark:text-white dark:focus:ring-mainbody-800 dark:focus:border-mainbody-800">
+                                                                    {{-- <option selected disabled>Select Encryption Key</option> --}}
+                                                                    @foreach ($encryption_keys as $encryption_key)
+                                                                        <option value="{{ $encryption_key->key }}"
+                                                                            data-view_city_for_admin_encryption_key="{{ $encryption_key->key }}">
+                                                                            {{ $encryption_key->key_description->name }}
+                                                                        </option>
+                                                                    @endforeach
+                                                                </select>
+                                                            </div>
+                                                            <div>
+                                                                <a href="#" id="btnEncryptViewCityForAdmin"
+                                                                    class=" float-right mt-6 text-white bg-mainbody-300 hover:bg-mainbody-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-mainbody-600 dark:hover:bg-mainbody-700 dark:focus:ring-mainbody-800">Encrypt</a>
+                                                                <a href="#" id="btnDecryptViewCityForAdmin"
+                                                                    class=" float-right mt-6 mr-4 text-white bg-mainbody-300 hover:bg-mainbody-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-mainbody-600 dark:hover:bg-mainbody-700 dark:focus:ring-mainbody-800">Decrypt</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    {{-- For Township --}}
+                                                    <div class="encrypt-model " id="encrypt-model">
+                                                        <div class="grid gap-6 mt-6 md:grid-cols-2">
+                                                            <div>
+                                                                <label for="view_township_for_admin_encryption_key"
+                                                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Encryption
+                                                                    Key For City </label>
+                                                                <select id="view_township_for_admin_encryption_key"
+                                                                    name="view_township_for_admin_encryption_key"
+                                                                    class="encryption_key bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-mainbody-300 focus:border-mainbody-300 block w-full p-2.5 dark:bg-mainbody-700 dark:border-mainbody-600 dark:placeholder-mainbody-300 dark:text-white dark:focus:ring-mainbody-800 dark:focus:border-mainbody-800">
+                                                                    {{-- <option selected disabled>Select Encryption Key</option> --}}
+                                                                    @foreach ($encryption_keys as $encryption_key)
+                                                                        <option value="{{ $encryption_key->key }}"
+                                                                            data-view_township_for_admin_encryption_key="{{ $encryption_key->key }}">
+                                                                            {{ $encryption_key->key_description->name }}
+                                                                        </option>
+                                                                    @endforeach
+                                                                </select>
+                                                            </div>
+                                                            <div>
+                                                                <a href="#" id="btnEncryptViewTownshipForAdmin"
+                                                                    class=" float-right mt-6 text-white bg-mainbody-300 hover:bg-mainbody-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-mainbody-600 dark:hover:bg-mainbody-700 dark:focus:ring-mainbody-800">Encrypt</a>
+                                                                <a href="#" id="btnDecryptViewTownshipForAdmin"
+                                                                    class=" float-right mt-6 mr-4 text-white bg-mainbody-300 hover:bg-mainbody-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-mainbody-600 dark:hover:bg-mainbody-700 dark:focus:ring-mainbody-800">Decrypt</a>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>

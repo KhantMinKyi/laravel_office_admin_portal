@@ -158,7 +158,8 @@ $encryption_keys = KeyPermission::where('user_id', Auth::user()->id)
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-mainbody-300 focus:border-mainbody-300 block w-full p-2.5 dark:bg-mainbody-700 dark:border-mainbody-600 dark:placeholder-mainbody-300 dark:text-white dark:focus:ring-mainbody-800 dark:focus:border-mainbody-800">
                         <option selected disabled>Select City</option>
                         @foreach ($cities as $city)
-                            <option value="{{ $city->id }}">{{ $city->name }}</option>
+                            <option value="{{ $city->id }}" class="data_input_create_city_for_admin">
+                                {{ $city->name }}</option>
                         @endforeach
                     </select>
                 </div>
@@ -169,9 +170,63 @@ $encryption_keys = KeyPermission::where('user_id', Auth::user()->id)
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-mainbody-300 focus:border-mainbody-300 block w-full p-2.5 dark:bg-mainbody-700 dark:border-mainbody-600 dark:placeholder-mainbody-300 dark:text-white dark:focus:ring-mainbody-800 dark:focus:border-mainbody-800">
                         <option selected disabled>Select Township</option>
                         @foreach ($townships as $township)
-                            <option value="{{ $township->id }}">{{ $township->name }}</option>
+                            <option value="{{ $township->id }}" class="data_input_create_township_for_admin">
+                                {{ $township->name }}</option>
                         @endforeach
                     </select>
+                </div>
+            </div>
+            {{-- For City --}}
+            <div class="encrypt-model " id="encrypt-model">
+                <div class="grid gap-6 mt-6 md:grid-cols-2">
+                    <div>
+                        <label for="create_city_for_admin_encryption_key"
+                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Encryption
+                            Key For City </label>
+                        <select id="create_city_for_admin_encryption_key" name="create_city_for_admin_encryption_key"
+                            class="encryption_key bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-mainbody-300 focus:border-mainbody-300 block w-full p-2.5 dark:bg-mainbody-700 dark:border-mainbody-600 dark:placeholder-mainbody-300 dark:text-white dark:focus:ring-mainbody-800 dark:focus:border-mainbody-800">
+                            {{-- <option selected disabled>Select Encryption Key</option> --}}
+                            @foreach ($encryption_keys as $encryption_key)
+                                <option value="{{ $encryption_key->key }}"
+                                    data-create_city_for_admin_encryption_key="{{ $encryption_key->key }}">
+                                    {{ $encryption_key->key_description->name }}
+                                </option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div>
+                        <a href="#" id="btnEncryptCreateCityForAdmin"
+                            class=" float-right mt-6 text-white bg-mainbody-300 hover:bg-mainbody-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-mainbody-600 dark:hover:bg-mainbody-700 dark:focus:ring-mainbody-800">Encrypt</a>
+                        <a href="#" id="btnDecryptCreateCityForAdmin"
+                            class=" float-right mt-6 mr-4 text-white bg-mainbody-300 hover:bg-mainbody-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-mainbody-600 dark:hover:bg-mainbody-700 dark:focus:ring-mainbody-800">Decrypt</a>
+                    </div>
+                </div>
+            </div>
+            {{-- For Township --}}
+            <div class="encrypt-model " id="encrypt-model">
+                <div class="grid gap-6 mt-6 md:grid-cols-2">
+                    <div>
+                        <label for="create_township_for_admin_encryption_key"
+                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Encryption
+                            Key For Township </label>
+                        <select id="create_township_for_admin_encryption_key"
+                            name="create_township_for_admin_encryption_key"
+                            class="encryption_key bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-mainbody-300 focus:border-mainbody-300 block w-full p-2.5 dark:bg-mainbody-700 dark:border-mainbody-600 dark:placeholder-mainbody-300 dark:text-white dark:focus:ring-mainbody-800 dark:focus:border-mainbody-800">
+                            <option selected disabled>Select Encryption Key</option>
+                            @foreach ($encryption_keys as $encryption_key)
+                                <option value="{{ $encryption_key->key }}"
+                                    data-create_township_for_admin_encryption_key="{{ $encryption_key->key }}">
+                                    {{ $encryption_key->key_description->name }}
+                                </option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div>
+                        <a href="#" id="btnEncryptCreateTownshipForAdmin"
+                            class=" float-right mt-6 text-white bg-mainbody-300 hover:bg-mainbody-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-mainbody-600 dark:hover:bg-mainbody-700 dark:focus:ring-mainbody-800">Encrypt</a>
+                        <a href="#" id="btnDecryptCreateTownshipForAdmin"
+                            class=" float-right mt-6 mr-4 text-white bg-mainbody-300 hover:bg-mainbody-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-mainbody-600 dark:hover:bg-mainbody-700 dark:focus:ring-mainbody-800">Decrypt</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -222,7 +277,8 @@ $encryption_keys = KeyPermission::where('user_id', Auth::user()->id)
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-mainbody-300 focus:border-mainbody-300 block w-full p-2.5 dark:bg-mainbody-700 dark:border-mainbody-600 dark:placeholder-mainbody-300 dark:text-white dark:focus:ring-mainbody-800 dark:focus:border-mainbody-800">
                     <option selected disabled>Select Department</option>
                     @foreach ($departments as $department)
-                        <option value="{{ $department->id }}">{{ $department->name }} ({{ $department->branch->name }})
+                        <option value="{{ $department->id }}">{{ $department->name }}
+                            ({{ $department->branch->name }})
                         </option>
                     @endforeach
                 </select>
