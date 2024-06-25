@@ -19,7 +19,6 @@
                         <th scope="col" class="px-4 py-3 text-sm font-semibold">Position</th>
                         <th scope="col" class="px-4 py-3 text-sm font-semibold">Branch</th>
                         <th scope="col" class="px-4 py-3 text-sm font-semibold">Department</th>
-                        <th scope="col" class="px-4 py-3 text-sm font-semibold">Township</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -33,7 +32,6 @@
                             <td class="px-4 py-5">{{ $township_user->position }}</td>
                             <td class="px-4 py-5">{{ $township_user->branch->name }}</td>
                             <td class="px-4 py-5">{{ $township_user->department->name }}</td>
-                            <td class="px-4 py-5">{{ $township->name }}</td>
                         </tr>
                     @endforeach
                 </tbody>
