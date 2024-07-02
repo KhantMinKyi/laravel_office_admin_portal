@@ -29,7 +29,7 @@ class UserController extends Controller
             'departments' => $departments,
         ]);
     }
-    public function operationUserList()
+    public function operationUserList(Request $request)
     {
         $operation_users = User::with('city', 'township', 'branch', 'department')->where('user_type', 'user')
             ->where('is_operation', 1)->paginate(10);
@@ -37,15 +37,27 @@ class UserController extends Controller
         $townships = Township::select('id', 'name')->get();
         $branches = Branch::select('id', 'name')->get();
         $departments = Department::with('branch')->get();
-        return view('admins.users.operation_user_list', [
-            'operation_users' => $operation_users,
-            'cities' => $cities,
-            'townships' => $townships,
-            'branches' => $branches,
-            'departments' => $departments,
-        ]);
+        $url = $request->getRequestUri();
+        if ($url == '/admin/operation_user_list') {
+            return view('admins.users.operation_user_list', [
+                'operation_users' => $operation_users,
+                'cities' => $cities,
+                'townships' => $townships,
+                'branches' => $branches,
+                'departments' => $departments,
+            ]);
+        }
+        if ($url = '/user/operation_user_list') {
+            return view('users.users.operation_user_list', [
+                'operation_users' => $operation_users,
+                'cities' => $cities,
+                'townships' => $townships,
+                'branches' => $branches,
+                'departments' => $departments,
+            ]);
+        }
     }
-    public function normalUserList()
+    public function normalUserList(Request $request)
     {
         $normal_users = User::with('city', 'township', 'branch', 'department')->where('user_type', 'user')
             ->where('is_operation', 0)->paginate(10);
@@ -53,13 +65,26 @@ class UserController extends Controller
         $townships = Township::select('id', 'name')->get();
         $branches = Branch::select('id', 'name')->get();
         $departments = Department::with('branch')->get();
-        return view('admins.users.normal_user_list', [
-            'normal_users' => $normal_users,
-            'cities' => $cities,
-            'townships' => $townships,
-            'branches' => $branches,
-            'departments' => $departments,
-        ]);
+        $url = $request->getRequestUri();
+        // return $url;
+        if ($url == '/admin/normal_user_list') {
+            return view('admins.users.normal_user_list', [
+                'normal_users' => $normal_users,
+                'cities' => $cities,
+                'townships' => $townships,
+                'branches' => $branches,
+                'departments' => $departments,
+            ]);
+        }
+        if ($url == '/user/normal_user_list') {
+            return view('users.users.normal_user_list', [
+                'normal_users' => $normal_users,
+                'cities' => $cities,
+                'townships' => $townships,
+                'branches' => $branches,
+                'departments' => $departments,
+            ]);
+        }
     }
     public function viewAdminUserDetail(Request $request)
     {
