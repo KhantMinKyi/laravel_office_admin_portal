@@ -123,12 +123,20 @@ class AttendanceController extends Controller
             $lastSixMonth[] = $currentDate->copy()->subMonth($i)->format(('Y-m'));
         }
 
-        $query = Attendance::with('user')->where('user_id', $user_id);
+        $query = Attendance::with('user');
         if (isset($request->month)) {
             $year = date('Y', strtotime($request->month));
             $monthNumber = date('m', strtotime($request->month));
             $query->whereYear('attendance_date', $year)
                 ->whereMonth('attendance_date', $monthNumber);
+        }
+        if (Auth::user()->user_type == 'user' && Auth::user()->is_operation == 0) {
+            $query->where('user_id', Auth::user()->id);
+        }
+        if (Auth::user()->user_type == 'user' && Auth::user()->is_operation == 1) {
+            $query->whereHas('user', function ($query) {
+                $query->where('branch_id', Auth::user()->branch_id);
+            });
         }
         $attendances = $query->get();
         // return $attendances;

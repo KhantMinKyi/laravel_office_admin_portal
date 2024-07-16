@@ -14,7 +14,7 @@
                     </svg>
                 </a>
                 <div>
-                    <h4 class="flex justify-center mb-4 font-semibold text-gray-500 dark:text-gray-100">Add Key Form
+                    <h4 class="flex justify-center mb-4 font-semibold text-gray-500 dark:text-gray-100">Edit Key Form
                     </h4>
                     {{-- Include Create Key Permission --}}
                     <form action="{{ route('key_permission.update', ['key_permission' => $key_permission->id]) }}"

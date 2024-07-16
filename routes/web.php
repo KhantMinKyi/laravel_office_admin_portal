@@ -11,6 +11,12 @@ use App\Http\Controllers\LocationManagementController;
 use App\Http\Controllers\SalaryController;
 use App\Http\Controllers\TownshipController;
 use App\Http\Controllers\UserController;
+use App\Models\Attendance;
+use App\Models\Branch;
+use App\Models\City;
+use App\Models\Department;
+use App\Models\Township;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -30,7 +36,11 @@ Route::get('/', function () {
 
 Route::prefix('admin')->middleware(['is_admin'])->group(function () {
     Route::get('/', function () {
-        return view('admins.admin_index');
+        $cities_count = City::all()->count();
+        $townships_count = Township::all()->count();
+        $branches_count = Branch::all()->count();
+        $departments_count = Department::all()->count();
+        return view('admins.admin_index', compact('cities_count', 'townships_count', 'branches_count', 'departments_count'));
     });
     include __DIR__ . '/route_groups/users/admin_user.php';
     Route::resource('city', CityController::class);
@@ -49,7 +59,8 @@ Route::prefix('admin')->middleware(['is_admin'])->group(function () {
 Route::prefix('user')->middleware(['is_user'])->group(function () {
     include __DIR__ . '/route_groups/users/user.php';
     Route::get('/', function () {
-        return view('users.user_index');
+        $attendances = Attendance::where('user_id', Auth::user()->id)->get();
+        return view('users.user_index', compact('attendances'));
     });
     Route::resource('user_salary', SalaryController::class);
     Route::resource('user_attendance', AttendanceController::class);
